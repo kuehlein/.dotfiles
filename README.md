@@ -4,7 +4,7 @@
 
 1. Clone repo into `~`
 ```
-git clone <ssh>
+git clone git@github.com:kuehlein/.dotfiles.git
 ```
 
 2. `cd` into `.dotfiles/`
