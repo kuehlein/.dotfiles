@@ -1,0 +1,7 @@
+[user]
+	email = 30834677+kuehlein@users.noreply.github.com
+	name = kuehlein
+[url "https://"]
+	insteadOf = git://
+[core]
+	editor = nvim
