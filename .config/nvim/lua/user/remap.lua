@@ -1,5 +1,5 @@
 vim.g.mapleader = " ";
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex); -- should we use this?
+vim.keymap.set("n", "<leader>e", vim.cmd.Ex); -- should we use this?
 
 -- vim grep
 -- vim.keymap.set("n", "<leader>g", ":vimgrep // %<Left><Left><Left>"); -- search
