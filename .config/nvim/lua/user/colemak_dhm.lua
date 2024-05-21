@@ -1,5 +1,5 @@
--- === Colemak Mod-DHM ===
-
+-- -- === Colemak Mod-DHM ===
+--
 -- local opts = { noremap = true, silent = true }
 --
 -- -- Colemak mnei(hjkl), t(i), <C-n>(f), <C-e>(e)

@@ -1,10 +1,8 @@
 vim.g.mapleader = " ";
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex); -- should we use this?
+
+vim.keymap.set("n", "<leader>-", vim.cmd.Ex);
 
 -- vim grep
--- vim.keymap.set("n", "<leader>g", ":vimgrep // %<Left><Left><Left>"); -- search
--- vim.keymap.set("n", "<leader>j", ":cn<CR>"); -- next - "n"?
--- vim.keymap.set("n", "<leader>k", ":cp<CR>"); -- previous - "p"?
 vim.keymap.set("n", "<leader>o", ":copen<CR>"); -- open match window
 vim.keymap.set("n", "<leader>c", ":cclose<CR>"); -- close match window
 
@@ -27,6 +25,7 @@ end); -- substitute
 -- vim.api.nvim_set_keymap('n', '<C->>', ':resize -5<CR>')
 
 
+
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 --
@@ -44,9 +43,6 @@ end); -- substitute
 -- vim.keymap.set("n", "<leader>Y", [["+Y]])
 --
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
---
--- -- This is going to get me cancelled
--- vim.keymap.set("i", "<C-c>", "<Esc>")
 --
 -- vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
