@@ -14,7 +14,7 @@
 -- require("lazy").setup(plugins, opts)
 
 -- colemak DHm remappings
-require("user.colemak_dhm");
+-- require("user.colemak_dhm");
 
 require("user.remap");
 require("user.plugins");
