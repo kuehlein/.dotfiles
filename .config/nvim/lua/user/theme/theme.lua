@@ -135,15 +135,6 @@ function M.color_scheme()
     for group, style in pairs(t) do
         highlight(group, style);
     end
-
-    -- highlight illegal characters ()
-    -- vim.cmd('syntax match IllegalCharacter "​|‌|‍|‎|‏|﻿"');
-    -- vim.api.nvim_set_hl(0, "IllegalCharacter", { bg = "#FF0000" });
-    
-    -- TODO: how to do this??
-    -- create custom highlight group to target tokens we can't target alone
-    -- vim.cmd('syntax match Punctuation ",|;"');
-    -- vim.api.nvim_set_hl(0, "Punctuation", { default = 0, fg = p.white });
 end;
 
 

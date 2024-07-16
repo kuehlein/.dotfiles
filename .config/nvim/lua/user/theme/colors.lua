@@ -127,7 +127,7 @@ local palette = {
     blue = colors.blue[5],
     purple = colors.purple[5],
 
-    -- change to bg?
+    -- background
     bg = {
         gray = colors.gray[9],
         pink = colors.pink[9],
@@ -139,7 +139,7 @@ local palette = {
         purple = colors.purple[9],
     },
 
-    -- change to fg?
+    -- foreground
     fg = {
         gray = colors.gray[3],
         pink = colors.pink[3],

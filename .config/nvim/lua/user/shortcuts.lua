@@ -1,19 +1,3 @@
--- Function to copy the error message to the clipboard
--- function copy_error()
---     local diagnostics = vim.lsp.diagnostic.get_line_diagnostics({ border = single })
---
---     print("what the heck is going on --- ", diagnostics)
---
---     if #diagnostics == 0 then
---         print("No errors found")
---         return
---     end
---     local message = diagnostics[1].message
---     vim.fn.setreg('+', message)
--- end
---
--- vim.api.nvim_set_keymap('n', '<leader>e', ':lua vim.lsp.diagnostic.show_line_diagnostics({ border = "single" })<CR>', { noremap = true, silent = true })
-
 function expand_error()
     -- first call opens the error window, second jumps inside
     vim.diagnostic.open_float();
