@@ -1,0 +1,9 @@
+# git
+.git/
+.gitignore
+
+# misc.
+assets/
+README.md
+LICENSE
+

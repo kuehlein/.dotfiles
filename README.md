@@ -29,6 +29,15 @@ stow .
 
 6. Restart terminal session.
 
+### Misc
+
+Prevent dock from moving to second monitor (macos)
+```
+defaults write com.apple.dock autohide-delay -float 9999999; killall Dock
+```
+NOTE: if you somehow end up having the dock move to the second monitor anyway, set the delay to a much lower number, move the dock, then run this command again.
+
 ### TODO:
-a lot of stuff
+- a lot of stuff
+- glove80 remappings included in assets/
 

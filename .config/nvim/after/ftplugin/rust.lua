@@ -1,0 +1,51 @@
+-- apply these settings every time
+
+-- use 4 spaces for indents
+vim.opt_local.expandtab = true;
+vim.opt_local.shiftwidth = 4;
+vim.opt_local.softtabstop = 4;
+vim.opt_local.tabstop = 4;
+
+-- don't reapply config if it is already active
+if vim.g.rust_ftplugin_is_active then
+    return
+end
+
+vim.g.rust_ftplugin_is_active = true;
+
+
+local theme_utils = require("../../lua/utils/theme");
+
+local set = vim.opt_local;
+local p = theme_utils.palette;
+local c = theme_utils.colors;
+
+
+theme_utils.apply_theme({
+    ["@lsp.mod.constant.rust"] = { fg = p.fg.blue },
+    ["@lsp.mod.mutable.rust"] = { underline = true },
+    ["@lsp.type.enumMember.rust"] = { fg = p.fg.blue },
+    ["@lsp.type.formatSpecifier.rust"] = { fg = p.fg.red },
+    ["@lsp.type.macro.rust"] = { fg = p.fg.purple },
+    ["@lsp.type.parameter.rust"] = { fg = p.fg.orange },
+    ["@lsp.type.variable.rust"] = { fg = p.white },
+    ["@lsp.typemod.keyword.crateRoot.rust"] = { fg = p.fg.red },
+    ["@lsp.typemod.decorator.attribute.rust"] = { fg = p.fg.orange },
+    ["@lsp.typemod.function.defaultLibrary.rust"] = { fg = p.fg.blue },
+    ["@function.macro.rust"] = { fg = p.fg.pink }, -- probably not this...
+    ["@number.rust"] = { fg = c.blue[1] },
+    ["@punctuation.bracket.rust"] = { fg = p.fg.green },
+    ["@punctuation.delimiter.rust"] = { fg = p.fg.red },
+    ["@string.rust"] = { fg = c.blue[1] },
+    ["@string.escape.rust"] = { fg = p.fg.red },
+    ["@type.builtin.rust"] = { fg = p.fg.blue },
+    ["@type.qualifier.rust"] = { fg = p.fg.red },
+});
+
+-- Don't do comment stuff when i use "o"
+-- set.formatoptions:remove "o";
+
+-- vim.keymap.set("i", "<leader>pl", function()
+--     -- TODO: insert println! macro
+-- end, { buffer = 0 });
+

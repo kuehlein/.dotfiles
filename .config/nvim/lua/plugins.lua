@@ -1,6 +1,8 @@
 -- Only required if you have packer configured as `opt`
 vim.cmd [[packadd packer.nvim]]
 
+-- TODO: https://github.com/folke/neoconf.nvim
+
 
 return require('packer').startup(function(use)
     -- plugins
@@ -23,33 +25,29 @@ return require('packer').startup(function(use)
             {'williamboman/mason-lspconfig.nvim'},
 
             -- LSP Support
-            {'neovim/nvim-lspconfig'},
+            {
+                'neovim/nvim-lspconfig',
+                settings = {
+                    ["rust-analyzer"] = {
+                        procMacro = {
+                            ignored = {
+                                -- https://book.leptos.dev/getting_started/leptos_dx.html#2-editor-autocompletion-inside-component-and-server
+                                leptos_macro = {
+                                    -- "component",
+                                    "server",
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+
             -- autocompletion
             {'hrsh7th/nvim-cmp'},
             {'hrsh7th/cmp-nvim-lsp'},
             {'L3MON4D3/LuaSnip'},
         }
     }
-
-    -- diagnostics
-    -- use {
-    --     'folke/trouble.nvim',
-    --     config = function()
-    --         require('folke/trouble.nvim').setup {
-    --             icons = false,
-    --             fold_open = "v", -- icon used for open folds
-    --             fold_closed = ">", -- icon used for closed folds
-    --             indent_lines = false, -- add an indent guide below the fold icons
-    --             signs = {
-    --                 error = "error",
-    --                 warning = "warn",
-    --                 hint = "hint",
-    --                 information = "info"
-    --             },
-    --             use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
-    --         }
-    --     end
-    -- }
 
     -- comment utility
     use {

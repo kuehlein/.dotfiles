@@ -1,3 +1,32 @@
+local M = {};
+
+function reset_theme()
+    -- if another theme is set, clear it, then apply our theme
+    if vim.g.colors_name then
+        vim.cmd("highlight clear");
+    end
+
+    -- name of theme we are applying
+    vim.g.colors_name = "theme";
+end;
+
+function apply_theme(theme)
+    vim.opt.termguicolors = true;
+
+    -- Each entry into the inner table corresponds to a configuration key,
+    -- mapped to a highlight argument. We implement this in a function which we
+    -- conveniently call highlight(), just like the vim command we wrap:
+    local function highlight(group, style)
+        -- 0 is the global level, maybe add level to the `t` object?
+        vim.api.nvim_set_hl(0, group, style);
+    end;
+
+    -- apply the theme for each value in `t`
+    for group, style in pairs(theme) do
+        highlight(group, style);
+    end
+end;
+
 -- dark color theme for github theme
 local colors = {
     NONE = "NONE",
@@ -114,6 +143,7 @@ local colors = {
     },
 };
 
+
 local palette = {
     white = colors.white,
     gray = colors.gray[5],
@@ -152,8 +182,10 @@ local palette = {
     },
 };
 
-return {
-    colors = colors,
-    palette = palette,
-};
+M.colors = colors;
+M.palette = palette;
+M.apply_theme = apply_theme;
+M.reset_theme = reset_theme;
+
+return M;
 

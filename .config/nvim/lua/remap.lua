@@ -1,6 +1,6 @@
-vim.g.mapleader = " ";
-
 vim.keymap.set("n", "<leader>-", vim.cmd.Ex);
+
+---------------------------------------------------------------------------
 
 -- vim grep
 vim.keymap.set("n", "<leader>o", ":copen<CR>"); -- open match window
@@ -12,6 +12,11 @@ vim.keymap.set("n", "<leader>sr", function()
     vim.cmd("%s/" .. old_text .. "/" .. new_text .. "/gc");
 end); -- substitute
 
+-- increment/decrement
+vim.api.nvim_set_keymap("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true });
+vim.api.nvim_set_keymap("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true });
+vim.api.nvim_set_keymap("v", "+", "<C-a>", { desc = "Increment numbers", noremap = true });
+vim.api.nvim_set_keymap("v", "-", "<C-x>", { desc = "Decrement numbers", noremap = true });
 
 -- resize reset
 -- vim.api.nvim_set_keymap('n', '<C-=>', '<C-w><C-=>', { noremap = true, silent = true })
