@@ -8,4 +8,5 @@ require("remap"); -- TBD
 require("set"); -- In progress
 require("shortcuts"); -- TBD
 require("theme");
+require("colemak_dhm");
 

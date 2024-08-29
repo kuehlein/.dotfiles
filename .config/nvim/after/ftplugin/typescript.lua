@@ -14,11 +14,14 @@ end
 vim.g.typescript_ftplugin_is_active = true;
 
 
-local theme_utils = require("../../lua/utils/theme");
+local theme_path = os.getenv("HOME") .. "/.dotfiles/.config/nvim/lua/utils/theme.lua";
+package.page = package.path .. ";" .. theme_path;
 
-local set = vim.opt_local;
+local theme_utils = require("utils.theme");
+
+-- local set = vim.opt_local;
 local p = theme_utils.palette;
-local c = theme_utils.colors;
+local colors = theme_utils.colors;
 
 
 theme_utils.apply_theme({

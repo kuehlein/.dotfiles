@@ -143,7 +143,7 @@ local colors = {
     },
 };
 
-
+-- commonly used colors in chosen theme
 local palette = {
     white = colors.white,
     gray = colors.gray[5],

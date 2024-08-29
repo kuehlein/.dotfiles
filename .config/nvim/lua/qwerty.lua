@@ -15,17 +15,16 @@ vim.keymap.set('v', 'l', 'l', opts);
 vim.keymap.set('n', 'i', 'i', opts);
 vim.keymap.set('n', 'I', 'I', opts);
 
+vim.keymap.set('v', 'i', 'i', opts);
+vim.keymap.set('v', 'I', 'I', opts);
+
 vim.keymap.set('n', 'e', 'e', opts);
 vim.keymap.set('n', 'n', 'n', opts);
 vim.keymap.set('n', 'N', 'N', opts);
 vim.keymap.set('n', 'm', 'm', opts);
 
-vim.keymap.set('n', 'ci', 'ci', opts)
-vim.keymap.set('n', 'di', 'di', opts)
-vim.keymap.set('n', 'vi', 'vi', opts)
-vim.keymap.set('n', 'yi', 'yi', opts)
-vim.keymap.set('n', 'ct', 'ct', opts)
-vim.keymap.set('n', 'dt', 'dt', opts)
-vim.keymap.set('n', 'vt', 'vt', opts)
-vim.keymap.set('n', 'yt', 'yt', opts)
+vim.keymap.set('v', 'e', 'e', opts);
+vim.keymap.set('v', 'n', 'n', opts);
+vim.keymap.set('v', 'N', 'N', opts);
+vim.keymap.set('v', 'm', 'm', opts);
 

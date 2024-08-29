@@ -14,11 +14,14 @@ end
 vim.g.rust_ftplugin_is_active = true;
 
 
-local theme_utils = require("../../lua/utils/theme");
+local theme_path = os.getenv("HOME") .. "/.dotfiles/.config/nvim/lua/utils/theme.lua";
+package.page = package.path .. ";" .. theme_path;
 
-local set = vim.opt_local;
+local theme_utils = require("utils.theme");
+
+-- local set = vim.opt_local;
 local p = theme_utils.palette;
-local c = theme_utils.colors;
+local colors = theme_utils.colors;
 
 
 theme_utils.apply_theme({
@@ -33,10 +36,10 @@ theme_utils.apply_theme({
     ["@lsp.typemod.decorator.attribute.rust"] = { fg = p.fg.orange },
     ["@lsp.typemod.function.defaultLibrary.rust"] = { fg = p.fg.blue },
     ["@function.macro.rust"] = { fg = p.fg.pink }, -- probably not this...
-    ["@number.rust"] = { fg = c.blue[1] },
+    ["@number.rust"] = { fg = colors.blue[1] },
     ["@punctuation.bracket.rust"] = { fg = p.fg.green },
     ["@punctuation.delimiter.rust"] = { fg = p.fg.red },
-    ["@string.rust"] = { fg = c.blue[1] },
+    ["@string.rust"] = { fg = colors.blue[1] },
     ["@string.escape.rust"] = { fg = p.fg.red },
     ["@type.builtin.rust"] = { fg = p.fg.blue },
     ["@type.qualifier.rust"] = { fg = p.fg.red },
