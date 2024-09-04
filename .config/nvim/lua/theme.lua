@@ -28,8 +28,8 @@ function M.color_scheme()
     theme_utils.apply_theme({
         Comment = { fg = p.fg.gray },
         Constant = { fg = colors.blue[1] },
-        ColorColumn = { bg = colors.gray[8] },
-        CursorLine = { bg = colors.gray[8] },
+        ColorColumn = { bg = colors.gray[7] },
+        CursorLine = { bg = colors.gray[7] },
         CursorLineNr = { fg = p.white },
         EndOfBuffer = { fg = p.fg.gray },
         Identifier = { fg = p.fg.purple },
