@@ -56,13 +56,5 @@ return require('packer').startup(function(use)
             require('Comment').setup()
         end
     }
-
-    -- indent guides
-    -- use {
-    --     "lukas-reineke/indent-blankline.nvim",
-    --     config = function()
-    --         require("ibl").setup()
-    --     end
-    -- }
 end);
 

@@ -3,7 +3,7 @@ local lsp_zero = require('lsp-zero')
 lsp_zero.on_attach(function(client, bufnr)
     local opts = {buffer = bufnr, remap = false}
 
-    -- keymaps only exist for the current buffer (text we are editing)
+    -- keymaps only exist for the current buffer
     -- if there is no buffer, we can use these commands without these remaps
     vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
