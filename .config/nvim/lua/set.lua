@@ -41,6 +41,9 @@ vim.opt.colorcolumn = "80,100";
 -- highlight the line the cursor is currently on
 vim.o.cursorline = true;
 
+-- netrw
+vim.g.netrw_banner = 0;
+
 
 -- -- linting/formatting
 -- vim.g.ale_linters = { javascript = { "eslint" }, typescript = { "eslint" } };
