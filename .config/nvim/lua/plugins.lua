@@ -25,22 +25,7 @@ return require('packer').startup(function(use)
             {'williamboman/mason-lspconfig.nvim'},
 
             -- LSP Support
-            {
-                'neovim/nvim-lspconfig',
-                settings = {
-                    ["rust-analyzer"] = {
-                        procMacro = {
-                            ignored = {
-                                -- https://book.leptos.dev/getting_started/leptos_dx.html#2-editor-autocompletion-inside-component-and-server
-                                leptos_macro = {
-                                    -- "component",
-                                    "server",
-                                },
-                            },
-                        },
-                    },
-                },
-            },
+            {'neovim/nvim-lspconfig'},
 
             -- autocompletion
             {'hrsh7th/nvim-cmp'},
