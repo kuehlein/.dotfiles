@@ -12,6 +12,9 @@ vim.opt.smartindent = true;
 
 vim.opt.wrap = false;
 
+-- prevent comment continuation
+vim.opt_local.formatoptions:remove({ "r", "o" });
+
 -- disables swapfiles/backup files
 vim.opt.swapfile = false;
 vim.opt.backup = false;
@@ -24,7 +27,7 @@ vim.opt.incsearch = true; -- enable incremental search
 vim.opt.smartcase = true; -- ignores case during search unless uppercase
 
 -- scroll padding
-vim.opt.scrolloff = 15;
+vim.opt.scrolloff = 8;
 
 -- column to the left of line numbers with error indication
 vim.opt.signcolumn = "yes";

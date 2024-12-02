@@ -41,3 +41,6 @@ NOTE: if you somehow end up having the dock move to the second monitor anyway, s
 - a lot of stuff
 - glove80 remappings included in assets/
 
+### Thanks:
+My nvim configuration is heavily inspired by [TJ Devries' config](https://github.com/tjdevries/config.nvim/tree/37c9356fd40a8d3589638c8d16a6a6b1274c40ca)
+

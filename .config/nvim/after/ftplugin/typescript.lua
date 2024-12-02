@@ -1,6 +1,6 @@
 -- apply these settings every time
 
--- use 4 spaces for indents
+-- use 2 spaces for indents
 vim.opt_local.expandtab = true;
 vim.opt_local.shiftwidth = 2;
 vim.opt_local.softtabstop = 2;
