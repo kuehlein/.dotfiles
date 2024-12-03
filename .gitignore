@@ -1,3 +1,6 @@
 # local undo
 .undodir/
 
+# nvim package manager lock file
+.config/nvim/lazy-lock.json
+

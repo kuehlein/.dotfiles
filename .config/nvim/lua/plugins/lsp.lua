@@ -63,7 +63,7 @@ return {
 				--    "tsx",
 				--  },
 				-- },
-				ts_ls = true,
+				-- ts_ls = true,
 
 				jsonls = {
 					settings = {
