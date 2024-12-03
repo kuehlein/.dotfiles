@@ -4,8 +4,8 @@ return {
 		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
 		opts = {},
 		config = function()
-			require("typescript-tools").setup({})
-			-- require("config.typescript")
+			-- require("typescript-tools").setup({})
+			require("config.typescript")
 		end,
 	},
 }
