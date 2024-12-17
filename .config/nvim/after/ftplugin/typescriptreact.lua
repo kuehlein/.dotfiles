@@ -1,10 +1,11 @@
--- apply these settings every time
+-- TODO: delete this file once i figure out how to fix filetypes
+-- TODO: delete this file once i figure out how to fix filetypes
+-- TODO: delete this file once i figure out how to fix filetypes
+-- TODO: delete this file once i figure out how to fix filetypes
+-- TODO: delete this file once i figure out how to fix filetypes
+-- TODO: delete this file once i figure out how to fix filetypes
 
--- .................
--- .................
-print("running after/ftplugin/typescript...")
--- .................
--- .................
+-- apply these settings every time
 
 -- use 2 spaces for indents
 vim.opt_local.expandtab = true

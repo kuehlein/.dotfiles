@@ -37,12 +37,18 @@ require("set") -- In progress
 require("shortcuts") -- TBD
 require("theme")
 
--- Setup lazy.nvim
-require("lazy").setup({
-	import = "plugins",
-}, {
-	change_detection = { notify = false },
+-- TODO: is there a better place to put this??
+vim.filetype.add({
+	extension = {
+		jsx = "javascriptreact",
+		tsx = "typescriptreact",
+		-- jsx = "javascript",
+		-- tsx = "typescript",
+	},
 })
+
+-- Setup lazy.nvim
+require("lazy").setup({ import = "plugins" }, { change_detection = { notify = false } })
 
 -- make it trans
 -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

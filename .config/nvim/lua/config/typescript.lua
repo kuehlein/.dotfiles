@@ -1,6 +1,6 @@
 require("typescript-tools").setup({
 	on_attach = function()
-		print("todo...?")
+		-- TODO...
 	end,
 	handlers = {
 		-- ...
