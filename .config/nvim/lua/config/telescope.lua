@@ -7,8 +7,11 @@ require("telescope").setup({
 		wrap_results = true,
 
 		fzf = {},
+		-- smart_history = {
+		-- 	enable = false, -- what....
+		-- },
 		history = {
-			path = data .. "/telescope_history.sqlite3", -- hmm......
+			-- path = data .. "/telescope_history.sqlite3", -- hmm......
 			-- path = vim.fs.joinpath(data, "telescope_history.sqlite3"),
 			limit = 100,
 		},
@@ -24,11 +27,11 @@ pcall(require("telescope").load_extension, "ui-select")
 
 local builtin = require("telescope.builtin")
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files)
-vim.keymap.set("n", "<leader>fgf", builtin.git_files)
-vim.keymap.set("n", "<leader>fh", builtin.help_tags)
+vim.keymap.set("n", "<leader>ff", builtin.find_files) -- find file
+vim.keymap.set("n", "<leader>fgf", builtin.git_files) -- find git file
+vim.keymap.set("n", "<leader>fh", builtin.help_tags) -- find help
 
-vim.keymap.set("n", "<leader>fb", builtin.buffers)
+vim.keymap.set("n", "<leader>fb", builtin.buffers) -- find buffers
 vim.keymap.set("n", "<leader>/", builtin.current_buffer_fuzzy_find)
 
 vim.keymap.set("n", "<leader>gg", builtin.live_grep) -- fg....

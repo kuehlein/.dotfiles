@@ -64,6 +64,7 @@ return {
 				--  },
 				-- },
 				-- ts_ls = true,
+				tsserver = {},
 
 				jsonls = {
 					settings = {

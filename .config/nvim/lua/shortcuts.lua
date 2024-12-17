@@ -1,13 +1,12 @@
-function expand_error()
-    -- first call opens the error window, second jumps inside
-    vim.diagnostic.open_float();
-    vim.diagnostic.open_float();
+local function expand_error()
+	-- first call opens the error window, second jumps inside
+	vim.diagnostic.open_float()
+	vim.diagnostic.open_float()
 end
 vim.api.nvim_set_keymap("n", "<leader>e", "", { callback = expand_error, noremap = true, silent = true })
 
 -- copy to system clipboard in visual mode
-vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true });
-
+vim.api.nvim_set_keymap("v", "<leader>y", '"+y', { noremap = true, silent = true })
 
 -- TODO: autocomplete brackets...
 --       * auto open/close
@@ -20,14 +19,12 @@ vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true
 
 -- vim.api.nvim_set_keymap("i", "<CR>", "<CR>", { noremap = true, silent = true });
 
-
 -- vim.api.nvim_exec([[
 --     augroup js_ts_config
 --         autocmd!
 --         autocmd FileType javascript, typescript nnoremap <buffer> <leader>clg :lua my_func()<CR>
 --     augroup END
 -- ]], false);
-
 
 -- vim.api.nvim_create_autocmd("FileType", {
 --     pattern = { "javascript", "typescript" },
@@ -64,7 +61,7 @@ vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true
 --
 -- function smart_brackets(bracket)
 --     local row, col = unpack(vim.api.nvim_win_get_cursor(0));
---     
+--
 -- end
 --
 -- vim.api.nvim_set_keymap('n', '{', smart_brackets, { noremap = true, silent = true });
@@ -74,4 +71,3 @@ vim.api.nvim_set_keymap('v', '<leader>y', '"+y', { noremap = true, silent = true
 --         vim.api.nvim_set_keymap("n", start, smart_brackets(start), { noremap = true, silent = true });
 --     end
 -- end
-
