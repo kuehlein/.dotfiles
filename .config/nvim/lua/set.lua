@@ -12,13 +12,20 @@ vim.opt.smartindent = true
 
 vim.opt.wrap = false
 
--- prevent comment continuation
-vim.opt_local.formatoptions:remove({ "r", "o" })
+-- neovim will override this option unless set in this janky way
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "*",
+	callback = function()
+		-- prevent comment continuation for all filetypes
+		vim.opt.formatoptions:remove({ "c", "r", "o" })
+	end,
+})
 
 -- disables swapfiles/backup files
 vim.opt.swapfile = false
 vim.opt.backup = false
 
+-- store undos
 vim.opt.undofile = true
 vim.opt.undodir = os.getenv("HOME") .. "/.dotfiles/.config/nvim/.undodir"
 
@@ -46,11 +53,6 @@ vim.o.cursorline = true
 
 -- netrw
 vim.g.netrw_banner = 0
-
--- -- linting/formatting
--- vim.g.ale_linters = { javascript = { "eslint" }, typescript = { "eslint" } };
--- vim.g.ale_fixers = { javascript = { "prettier" }, typescript = { "prettier" } };
--- vim.g.ale_fix_on_save = 1;
 
 -- spell check
 vim.opt.spell = true

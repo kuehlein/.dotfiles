@@ -7,7 +7,6 @@ local p = theme_utils.palette -- commonly used colors
 
 local M = {}
 
--- TODO: i wonder if there's a way to "compile" this so we don't have to run this on every startup
 -- TODO: come up with a proper theme name?
 
 function M.color_scheme()
@@ -68,10 +67,6 @@ function M.color_scheme()
 		["@string.escape.json"] = { fg = p.fg.red },
 	})
 end
-
--- transparent background color
--- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 
 -- TODO: should we run this here?
 M.color_scheme()
