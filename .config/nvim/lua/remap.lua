@@ -1,22 +1,24 @@
-vim.keymap.set("n", "<leader>-", vim.cmd.Ex);
+vim.keymap.set("n", "<leader>-", vim.cmd.Ex)
 
 -- increment/decrement
-vim.api.nvim_set_keymap("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true });
-vim.api.nvim_set_keymap("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true });
-vim.api.nvim_set_keymap("v", "+", "<C-a>", { desc = "Increment numbers", noremap = true });
-vim.api.nvim_set_keymap("v", "-", "<C-x>", { desc = "Decrement numbers", noremap = true });
+vim.api.nvim_set_keymap("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
+vim.api.nvim_set_keymap("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
+vim.api.nvim_set_keymap("v", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
+vim.api.nvim_set_keymap("v", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
 
+---------------------------------------------------------------------------
+-- probably dont keep these... vvv
 ---------------------------------------------------------------------------
 
 -- vim grep
-vim.keymap.set("n", "<leader>o", ":copen<CR>"); -- open match window
-vim.keymap.set("n", "<leader>c", ":cclose<CR>"); -- close match window
+vim.keymap.set("n", "<leader>o", ":copen<CR>") -- open match window
+vim.keymap.set("n", "<leader>c", ":cclose<CR>") -- close match window
 
 vim.keymap.set("n", "<leader>sr", function()
-    local old_text = vim.fn.input("search:");
-    local new_text = vim.fn.input("replace:");
-    vim.cmd("%s/" .. old_text .. "/" .. new_text .. "/gc");
-end); -- substitute
+	local old_text = vim.fn.input("search:")
+	local new_text = vim.fn.input("replace:")
+	vim.cmd("%s/" .. old_text .. "/" .. new_text .. "/gc")
+end) -- substitute
 
 -- resize reset
 -- vim.api.nvim_set_keymap('n', '<C-=>', '<C-w><C-=>', { noremap = true, silent = true })
@@ -28,8 +30,6 @@ end); -- substitute
 -- horizontal resize
 -- vim.api.nvim_set_keymap('n', '<C-<>', ':resize +5<CR>')
 -- vim.api.nvim_set_keymap('n', '<C->>', ':resize -5<CR>')
-
-
 
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -67,4 +67,3 @@ end); -- substitute
 -- vim.keymap.set("n", "<leader><leader>", function()
 --     vim.cmd("so")
 -- end)
-
