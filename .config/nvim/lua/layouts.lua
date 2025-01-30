@@ -21,6 +21,9 @@ local colemak = function()
 	vim.keymap.set("n", "l", "e", opts) -- end of word replaces (e)nd
 	vim.keymap.set("v", "l", "e", opts) -- end of word replaces (e)nd
 
+	vim.keymap.set("n", "h", "m", opts) -- (h)ighlight to remap marks
+	vim.keymap.set("v", "h", "m", opts) -- (h)ighlight to remap marks
+
 	-- vim.keymap.set('n', 'h', 'n', opts);          -- next match replaces (n)ext
 	-- vim.keymap.set('n', 'k', 'N', opts);          -- previous match replaces (N) prev
 	-- vim.keymap.set('n', '<C-m>', 'm', opts);      -- mark replaces (m)ark

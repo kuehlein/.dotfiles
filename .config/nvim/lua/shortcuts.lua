@@ -3,6 +3,7 @@ local function expand_error()
 	vim.diagnostic.open_float()
 	vim.diagnostic.open_float()
 end
+
 vim.api.nvim_set_keymap("n", "<leader>e", "", { callback = expand_error, noremap = true, silent = true })
 
 -- copy to system clipboard in visual mode

@@ -16,14 +16,9 @@ local function apply_theme(theme)
 	-- Each entry into the inner table corresponds to a configuration key,
 	-- mapped to a highlight argument. We implement this in a function which we
 	-- conveniently call highlight(), just like the vim command we wrap:
-	local function highlight(group, style)
+	for group, style in pairs(theme) do
 		-- 0 is the global level, maybe add level to the `t` object?
 		vim.api.nvim_set_hl(0, group, style)
-	end
-
-	-- apply the theme for each value in `t`
-	for group, style in pairs(theme) do
-		highlight(group, style)
 	end
 end
 
