@@ -51,8 +51,7 @@ end
 
 vim.api.nvim_create_autocmd({
 	"BufEnter", -- Triggered after switching to a new buffer
-	"BufWritePost", -- Triggered after saving a file
-	"InsertLeave", -- Triggered after leaving insert mode
+	"CursorHold", -- Triggered when the cursor stops moving
 }, {
 	pattern = "*",
 	callback = DisplayMarkIndicator,
