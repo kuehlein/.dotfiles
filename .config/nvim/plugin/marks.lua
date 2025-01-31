@@ -49,7 +49,11 @@ function DisplayMarkIndicator()
 	PlaceMarkIndicator(">") -- End of last visual selection
 end
 
-vim.api.nvim_create_autocmd({ "BufWritePost", "CursorHold" }, {
+vim.api.nvim_create_autocmd({
+	"BufEnter", -- Triggered after switching to a new buffer
+	"BufWritePost", -- Triggered after saving a file
+	"InsertLeave", -- Triggered after leaving insert mode
+}, {
 	pattern = "*",
 	callback = DisplayMarkIndicator,
 })
