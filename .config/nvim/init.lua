@@ -2,7 +2,7 @@ local init_lazy = require("lazy_init")
 
 require("remap") -- TBD
 require("set") -- In progress
-require("shortcuts") -- TBD
+require("shortcuts")
 require("theme")
 
 local layouts = require("layouts")

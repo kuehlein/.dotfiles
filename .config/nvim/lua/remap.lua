@@ -20,17 +20,6 @@ vim.keymap.set("n", "<leader>sr", function()
 	vim.cmd("%s/" .. old_text .. "/" .. new_text .. "/gc")
 end) -- substitute
 
--- resize reset
--- vim.api.nvim_set_keymap('n', '<C-=>', '<C-w><C-=>', { noremap = true, silent = true })
-
--- vertical resize
--- vim.api.nvim_set_keymap('n', '<C-+>', ':vertical resize +5<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-->', ':vertical resize -5<CR>', { noremap = true, silent = true })
-
--- horizontal resize
--- vim.api.nvim_set_keymap('n', '<C-<>', ':resize +5<CR>')
--- vim.api.nvim_set_keymap('n', '<C->>', ':resize -5<CR>')
-
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 --
@@ -40,12 +29,12 @@ end) -- substitute
 -- vim.keymap.set("n", "n", "nzzzv")
 -- vim.keymap.set("n", "N", "Nzzzv")
 --
--- -- greatest remap ever
--- vim.keymap.set("x", "<leader>p", [["_dP]])
---
--- -- next greatest remap ever : asbjornHaland
--- vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
--- vim.keymap.set("n", "<leader>Y", [["+Y]])
+-- deletes and pastes without yanking into any registers
+vim.keymap.set("x", "<leader>p", [["_dP]])
+
+-- next greatest remap ever : asbjornHaland
+-- vim.keymap.set({ "n", "v" }, "<leader>c", [["+y]])
+-- vim.keymap.set("n", "<leader>C", [["+Y]])
 --
 -- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 --

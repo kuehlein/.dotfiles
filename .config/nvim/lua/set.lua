@@ -43,7 +43,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 
 -- time in milliseconds to wait before `CursorHold`
-vim.opt.updatetime = 500
+vim.opt.updatetime = 200
 
 -- column markers
 vim.opt.colorcolumn = "80,100"
