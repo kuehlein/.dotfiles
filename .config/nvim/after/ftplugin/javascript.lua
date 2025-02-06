@@ -31,10 +31,3 @@ theme_utils.apply_theme({
 	["@punctuation.bracket.javascript"] = { fg = p.fg.green },
 	["@string.escape.javascript"] = { fg = p.fg.red },
 })
-
--- unpack vim.g.ale_linters (etc.) and apply language specific updates (vim.g.ale_linters = { unpack(vim.g.ale_linters, javascript = { "eslint" } })
-
--- linting/formatting
--- vim.g.ale_linters = { javascript = { "eslint" } };
--- vim.g.ale_fixers = { javascript = { "prettier" } };
--- vim.g.ale_fix_on_save = 1;

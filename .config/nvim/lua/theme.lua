@@ -50,7 +50,11 @@ function M.color_scheme()
 		Visual = { bg = colors.gray[7] },
 		Whitespace = { fg = colors.gray[6] },
 
-		-- DiagnosticUnnecessary = { blend = 20 }, -- ?????
+		-- netrw
+		netrwClassify = { fg = p.fg.green },
+		netrwDir = { fg = p.fg.purple },
+		netrwPlain = { fg = colors.blue[1] },
+		netrwTreebar = { fg = p.fg.red },
 
 		-- toml
 		["@punctuation.bracket.toml"] = { fg = p.fg.green },

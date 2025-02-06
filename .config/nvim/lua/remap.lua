@@ -1,24 +1,12 @@
 vim.keymap.set("n", "<leader>-", vim.cmd.Ex)
 
 -- increment/decrement
-vim.api.nvim_set_keymap("n", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
-vim.api.nvim_set_keymap("n", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
-vim.api.nvim_set_keymap("v", "+", "<C-a>", { desc = "Increment numbers", noremap = true })
-vim.api.nvim_set_keymap("v", "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
+vim.keymap.set({ "n", "v" }, "+", "<C-a>", { desc = "Increment numbers", noremap = true })
+vim.keymap.set({ "n", "v" }, "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
 
 ---------------------------------------------------------------------------
 -- probably dont keep these... vvv
----------------------------------------------------------------------------
-
--- vim grep
-vim.keymap.set("n", "<leader>o", ":copen<CR>") -- open match window
-vim.keymap.set("n", "<leader>c", ":cclose<CR>") -- close match window
-
-vim.keymap.set("n", "<leader>sr", function()
-	local old_text = vim.fn.input("search:")
-	local new_text = vim.fn.input("replace:")
-	vim.cmd("%s/" .. old_text .. "/" .. new_text .. "/gc")
-end) -- substitute
+--------------------------------------------------------------------------
 
 -- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 -- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -28,15 +16,13 @@ end) -- substitute
 -- vim.keymap.set("n", "<C-u>", "<C-u>zz")
 -- vim.keymap.set("n", "n", "nzzzv")
 -- vim.keymap.set("n", "N", "Nzzzv")
---
--- deletes and pastes without yanking into any registers
-vim.keymap.set("x", "<leader>p", [["_dP]])
+
+vim.keymap.set("x", "<leader>p", [["_dP]]) -- deletes and pastes without yanking into any register
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- deletes without yanking into any register
 
 -- next greatest remap ever : asbjornHaland
 -- vim.keymap.set({ "n", "v" }, "<leader>c", [["+y]])
 -- vim.keymap.set("n", "<leader>C", [["+Y]])
---
--- vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 --
 -- vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
@@ -49,10 +35,3 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 --
 -- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
---
--- vim.keymap.set("n", "<leader>vpp", "<cmd>e ~/.config/nvim/lua/user/packer.lua<CR>");
--- vim.keymap.set("n", "<leader>mr", "<cmd>CellularAutomaton make_it_rain<CR>");
---
--- vim.keymap.set("n", "<leader><leader>", function()
---     vim.cmd("so")
--- end)
