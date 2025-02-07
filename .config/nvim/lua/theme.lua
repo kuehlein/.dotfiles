@@ -50,6 +50,8 @@ function M.color_scheme()
 		Visual = { bg = colors.gray[7] },
 		Whitespace = { fg = colors.gray[6] },
 
+		Todo = { bg = p.bg.orange, fg = p.fg.orange },
+
 		-- netrw
 		netrwClassify = { fg = p.fg.green },
 		netrwDir = { fg = p.fg.purple },
