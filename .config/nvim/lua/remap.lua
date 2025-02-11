@@ -1,37 +1,49 @@
-vim.keymap.set("n", "<leader>-", vim.cmd.Ex)
+--
+-- Keymaps for new behavior
+--
+
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n", "<leader>e", "<Nop>", {
+	callback = function()
+		-- first call opens the error window, second jumps inside
+		vim.diagnostic.open_float()
+		vim.diagnostic.open_float()
+	end,
+	noremap = true,
+	silent = true,
+})
+
+-- Copy to system clipboard in visual mode
+vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]], opts)
+vim.keymap.set("n", "<leader>Y", [["+Y]], opts)
+
+vim.keymap.set("x", "<leader>p", [["_dP]], opts) -- deletes and pastes without yanking into any register
+vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]], opts) -- deletes without yanking into any register
+
+-- Jump out of current buffer and open Netrw
+vim.keymap.set("n", "<leader>-", vim.cmd.Ex, opts)
 
 -- increment/decrement
-vim.keymap.set({ "n", "v" }, "+", "<C-a>", { desc = "Increment numbers", noremap = true })
-vim.keymap.set({ "n", "v" }, "-", "<C-x>", { desc = "Decrement numbers", noremap = true })
+vim.keymap.set({ "n", "v" }, "+", "<C-a>", { desc = "Increment numbers", noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "-", "<C-x>", { desc = "Decrement numbers", noremap = true, silent = true })
 
 ---------------------------------------------------------------------------
 -- probably dont keep these... vvv
 --------------------------------------------------------------------------
 
--- vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
--- vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
---
--- vim.keymap.set("n", "J", "mzJ`z")
--- vim.keymap.set("n", "<C-d>", "<C-d>zz")
--- vim.keymap.set("n", "<C-u>", "<C-u>zz")
--- vim.keymap.set("n", "n", "nzzzv")
--- vim.keymap.set("n", "N", "Nzzzv")
-
-vim.keymap.set("x", "<leader>p", [["_dP]]) -- deletes and pastes without yanking into any register
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]]) -- deletes without yanking into any register
-
--- next greatest remap ever : asbjornHaland
--- vim.keymap.set({ "n", "v" }, "<leader>c", [["+y]])
--- vim.keymap.set("n", "<leader>C", [["+Y]])
---
--- vim.keymap.set("n", "Q", "<nop>")
 -- vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
--- vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
---
+
+-- apply formatting to current buffer... do we want this?
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
+
 -- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
---
--- vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
--- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+
+-- Search and replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+
+-- Execute the current file
+vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)

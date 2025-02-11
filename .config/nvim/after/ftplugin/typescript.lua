@@ -18,12 +18,13 @@ package.page = package.path .. ";" .. theme_path
 
 local theme_utils = require("utils.theme")
 
--- local set = vim.opt_local;
 local p = theme_utils.palette
 local colors = theme_utils.colors
 
 theme_utils.apply_theme({
 	-- lsp
+	["@lsp.type.class.typescript"] = { fg = p.fg.purple },
+	["@lsp.type.enum.typescript"] = { fg = p.fg.purple },
 	["@lsp.type.interface.typescript"] = { fg = p.fg.purple },
 	["@lsp.type.member.typescript"] = { fg = p.fg.purple },
 	["@lsp.type.parameter.typescript"] = { fg = p.fg.orange },
@@ -37,9 +38,12 @@ theme_utils.apply_theme({
 	["@lsp.typemod.variable.readonly.typescript"] = { fg = p.fg.blue },
 
 	-- typescript
+	["typescriptArrayMethod"] = { fg = p.fg.purple },
+	["typescriptArrowFunc"] = { fg = p.fg.red },
 	["typescriptAssign"] = { fg = p.fg.red },
 	["typescriptBinaryOp"] = { fg = p.fg.red },
 	["typescriptBlock"] = { fg = p.white },
+	["typescriptBOM"] = { fg = p.white },
 	["typescriptBraces"] = { fg = p.fg.green },
 	["typescriptCastKeyword"] = { fg = p.fg.red },
 	["typescriptConditionalParen"] = { fg = p.fg.red },
@@ -49,8 +53,8 @@ theme_utils.apply_theme({
 	["typescriptExceptions"] = { fg = p.fg.red },
 	["typescriptExport"] = { fg = p.fg.red },
 	["typescriptFuncCallArg"] = { fg = p.fg.orange },
+	["typescriptIdentifier"] = { fg = p.fg.blue },
 	["typescriptIdentifierName"] = { fg = p.white },
-	["typescriptProperty"] = { fg = p.white },
 	["typescriptImport"] = { fg = p.fg.red },
 	["typescriptInterfaceTypeParameter"] = { fg = p.fg.green },
 	["typescriptLoopParen"] = { fg = p.white },
@@ -64,7 +68,9 @@ theme_utils.apply_theme({
 	["typescriptParenExp"] = { fg = p.fg.red },
 	["typescriptParens"] = { fg = p.fg.green },
 	["typescriptPredefinedType"] = { fg = colors.blue[1] },
+	["typescriptProperty"] = { fg = p.white },
 	["typescriptTernaryOp"] = { fg = p.fg.red },
+	["typescriptTry"] = { fg = p.fg.red },
 	["typescriptTypeAnnotation"] = { fg = p.fg.red },
 	["typescriptTypeBracket"] = { fg = p.fg.green },
 	["typescriptTypeBrackets"] = { fg = p.fg.green },
