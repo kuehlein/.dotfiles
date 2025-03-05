@@ -7,6 +7,11 @@ local colemak = function()
 	vim.keymap.set({ "n", "v" }, "e", "k", opts) -- Move up
 	vim.keymap.set({ "n", "v" }, "i", "l", opts) -- Move right
 
+	vim.keymap.set({ "n", "v" }, "gm", "gh", opts) -- Move left (with wrap)
+	vim.keymap.set({ "n", "v" }, "gn", "gj", opts) -- Move down (with wrap)
+	vim.keymap.set({ "n", "v" }, "ge", "gk", opts) -- Move up (with wrap)
+	vim.keymap.set({ "n", "v" }, "gi", "gl", opts) -- Move right (with wrap)
+
 	vim.keymap.set({ "n", "v" }, "t", "i", opts) -- (t)ype replaces (i)nsert
 	vim.keymap.set({ "n", "v" }, "T", "I", opts) -- (T)ype at bol replaces (I)nsert
 
@@ -32,6 +37,11 @@ local qwerty = function()
 	vim.keymap.set({ "n", "v" }, "j", "j", opts)
 	vim.keymap.set({ "n", "v" }, "k", "k", opts)
 	vim.keymap.set({ "n", "v" }, "l", "l", opts)
+
+	vim.keymap.set({ "n", "v" }, "gh", "gh", opts)
+	vim.keymap.set({ "n", "v" }, "gj", "gj", opts)
+	vim.keymap.set({ "n", "v" }, "gk", "gk", opts)
+	vim.keymap.set({ "n", "v" }, "gl", "gl", opts)
 
 	vim.keymap.set({ "n", "v" }, "i", "i", opts)
 	vim.keymap.set({ "n", "v" }, "I", "I", opts)
