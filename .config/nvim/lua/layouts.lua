@@ -1,7 +1,7 @@
 local opts = { noremap = true, silent = true }
 
 local colemak = function()
-	-- Colemak mnei(hjkl), t(i), <C-n>(f), <C-e>(e)
+	-- Colemak mnei(hjkl), t(i), <C-n>(f), l(e)
 	vim.keymap.set({ "n", "v" }, "m", "h", opts) -- Move left
 	vim.keymap.set({ "n", "v" }, "n", "j", opts) -- Move down
 	vim.keymap.set({ "n", "v" }, "e", "k", opts) -- Move up
