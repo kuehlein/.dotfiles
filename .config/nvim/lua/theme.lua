@@ -1,5 +1,3 @@
--- inspired by: https://machineroom.purplekraken.com/posts/neovim-theme-lua/
-
 local theme_utils = require("utils.theme")
 
 local colors = theme_utils.colors -- all colors
@@ -78,3 +76,4 @@ end
 M.color_scheme()
 
 return M
+-- inspired by: https://machineroom.purplekraken.com/posts/neovim-theme-lua/

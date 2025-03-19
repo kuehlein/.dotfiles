@@ -72,9 +72,10 @@ return {
 
 			require("mason").setup()
 			local ensure_installed = {
-				"stylua",
 				"lua_ls",
-				"typescript-language-server", -- Added for TypeScript
+				"stylua",
+				"terraform-ls",
+				"typescript-language-server",
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)

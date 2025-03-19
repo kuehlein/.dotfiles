@@ -46,6 +46,7 @@ theme_utils.apply_theme({
 	["typescriptBOM"] = { fg = p.white },
 	["typescriptBraces"] = { fg = p.fg.green },
 	["typescriptCastKeyword"] = { fg = p.fg.red },
+	["typescriptClassStatic"] = { fg = p.fg.red },
 	["typescriptConditionalParen"] = { fg = p.fg.red },
 	["typescriptDefaultParam"] = { fg = p.fg.red },
 	["typescriptDotNotation"] = { fg = p.white },
