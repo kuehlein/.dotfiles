@@ -1,4 +1,3 @@
--- TODO: see if we need everything here...
 return {
 	{
 		"neovim/nvim-lspconfig",
@@ -11,21 +10,12 @@ return {
 
 			{ "j-hui/fidget.nvim", opts = {} },
 
-			-- Autoformatting
-			"stevearc/conform.nvim",
-
-			-- Schema information
-			"b0o/SchemaStore.nvim",
+			"stevearc/conform.nvim", -- autoformatting
+			"b0o/SchemaStore.nvim", -- schema information
 		},
 
-		-- TODO: move this to config/lsp.lua??
 		config = function()
-			require("neodev").setup({
-				-- library = {
-				--   plugins = { "nvim-dap-ui" },
-				--   types = true,
-				-- },
-			})
+			require("neodev").setup({})
 
 			local capabilities = nil
 			if pcall(require, "cmp_nvim_lsp") then
@@ -36,34 +26,15 @@ return {
 
 			local servers = {
 				bashls = true,
-				-- gopls = {
-				--   settings = {
-				--     gopls = {
-				--       hints = {
-				--         assignVariableTypes = true,
-				--         compositeLiteralFields = true,
-				--         compositeLiteralTypes = true,
-				--         constantValues = true,
-				--         functionTypeParameters = true,
-				--         parameterNames = true,
-				--         rangeVariableTypes = true,
-				--       },
-				--     },
-				--   },
-				-- },
 				lua_ls = true,
 				rust_analyzer = true,
+
 				cssls = true,
 
-				-- Probably want to disable formatting for this lang server
-				-- tsserver = true,
-				-- tsserver = {
-				--  filetypes = {
-				--    "ts",
-				--    "tsx",
-				--  },
-				-- },
-				-- ts_ls = true,
+				clangd = {
+					init_options = { clangdFileStatus = true },
+					filetypes = { "c" },
+				},
 
 				jsonls = {
 					settings = {
@@ -73,7 +44,6 @@ return {
 						},
 					},
 				},
-
 				yamlls = {
 					settings = {
 						yaml = {
@@ -85,18 +55,10 @@ return {
 						},
 					},
 				},
-
-				lexical = {
-					cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/lexical", "server" },
-					root_dir = require("lspconfig.util").root_pattern({ "mix.exs" }),
-				},
-
-				clangd = {
-					-- TODO: Could include cmd, but not sure those were all relevant flags.
-					--    looks like something i would have added while i was floundering
-					init_options = { clangdFileStatus = true },
-					filetypes = { "c" },
-				},
+				-- lexical = {
+				-- 	cmd = { "/home/tjdevries/.local/share/nvim/mason/bin/lexical", "server" },
+				-- 	root_dir = require("lspconfig.util").root_pattern({ "mix.exs" }),
+				-- },
 			}
 
 			local servers_to_install = vim.tbl_filter(function(key)
@@ -112,8 +74,7 @@ return {
 			local ensure_installed = {
 				"stylua",
 				"lua_ls",
-				-- "delve",
-				-- "tailwind-language-server",
+				"typescript-language-server", -- Added for TypeScript
 			}
 
 			vim.list_extend(ensure_installed, servers_to_install)
@@ -139,8 +100,9 @@ return {
 					local bufnr = args.buf
 					local client = assert(vim.lsp.get_client_by_id(args.data.client_id), "must have valid client")
 
-					-- set these here???????
+					-- TODO: should these be set here?
 					vim.opt_local.omnifunc = "v:lua.vim.lsp.omnifunc"
+
 					vim.keymap.set("n", "gd", vim.lsp.buf.definition, { buffer = 0 })
 					vim.keymap.set("n", "gr", vim.lsp.buf.references, { buffer = 0 })
 					vim.keymap.set("n", "gD", vim.lsp.buf.declaration, { buffer = 0 })
@@ -157,7 +119,7 @@ return {
 				end,
 			})
 
-			-- Autoformatting Setup
+			-- autoformatting setup
 			require("conform").setup({
 				formatters_by_ft = {
 					lua = { "stylua" },

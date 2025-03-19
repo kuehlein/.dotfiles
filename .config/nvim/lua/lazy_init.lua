@@ -1,7 +1,3 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-
--- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 
 if not vim.loop.fs_stat(lazypath) then
@@ -28,7 +24,4 @@ end
 -- Add lazy to the `runtimepath`, this allows us to `require` it
 vim.opt.rtp:prepend(lazypath)
 
--- initialize lazy
-return function()
-	require("lazy").setup({ import = "plugins" }, { change_detection = { notify = false } })
-end
+require("lazy").setup({ import = "plugins" }, { change_detection = { notify = false } })

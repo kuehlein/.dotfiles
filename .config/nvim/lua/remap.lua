@@ -43,7 +43,7 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- Search and replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], opts)
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- ??
 
 -- Execute the current file
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)
