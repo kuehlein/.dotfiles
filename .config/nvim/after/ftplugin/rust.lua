@@ -23,8 +23,9 @@ local p = theme_utils.palette
 local colors = theme_utils.colors
 
 theme_utils.apply_theme({
+	["@lsp.mod.attribute.rust"] = { fg = colors.blue[2] },
 	["@lsp.mod.constant.rust"] = { fg = p.fg.blue },
-	["@lsp.mod.mutable.rust"] = { underline = true },
+	["@lsp.mod.mutable.rust"] = { bold = true, fg = p.fg.red, bg = p.bg.red },
 	["@lsp.type.enumMember.rust"] = { fg = p.fg.blue },
 	["@lsp.type.formatSpecifier.rust"] = { fg = p.fg.red },
 	["@lsp.type.macro.rust"] = { fg = p.fg.purple },
@@ -33,7 +34,7 @@ theme_utils.apply_theme({
 	["@lsp.typemod.keyword.crateRoot.rust"] = { fg = p.fg.red },
 	["@lsp.typemod.decorator.attribute.rust"] = { fg = p.fg.orange },
 	["@lsp.typemod.function.defaultLibrary.rust"] = { fg = p.fg.blue },
-	["@function.macro.rust"] = { fg = p.fg.pink }, -- probably not this...
+	["@function.macro.rust"] = { fg = p.fg.red }, -- probably not this...
 	["@number.rust"] = { fg = colors.blue[1] },
 	["@punctuation.bracket.rust"] = { fg = p.fg.green },
 	["@punctuation.delimiter.rust"] = { fg = p.fg.red },

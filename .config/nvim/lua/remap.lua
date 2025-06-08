@@ -28,6 +28,9 @@ vim.keymap.set("n", "<leader>-", vim.cmd.Ex, opts)
 vim.keymap.set({ "n", "v" }, "+", "<C-a>", { desc = "Increment numbers", noremap = true, silent = true })
 vim.keymap.set({ "n", "v" }, "-", "<C-x>", { desc = "Decrement numbers", noremap = true, silent = true })
 
+-- Search and replace
+vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+
 ---------------------------------------------------------------------------
 -- probably dont keep these... vvv
 --------------------------------------------------------------------------
@@ -41,9 +44,6 @@ vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, opts)
 -- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 -- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 -- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- Search and replace
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]) -- ??
 
 -- Execute the current file
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", opts)

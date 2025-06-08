@@ -6,14 +6,7 @@ require("remap") -- TBD
 require("set") -- In progress
 require("overwrite")
 require("theme")
+require("custom.filetype")
 
 local layouts = require("layouts")
 layouts.colemak()
-
--- TODO: is there a better place to put this??
-vim.filetype.add({
-	extension = {
-		jsx = "javascriptreact", -- "javascript"
-		tsx = "typescriptreact", -- "typescript"
-	},
-})

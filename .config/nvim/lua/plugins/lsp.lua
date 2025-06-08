@@ -17,6 +17,8 @@ return {
 		config = function()
 			require("neodev").setup({})
 
+			vim.lsp.inlay_hint.enable(true)
+
 			local capabilities = nil
 			if pcall(require, "cmp_nvim_lsp") then
 				capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -27,7 +29,19 @@ return {
 			local servers = {
 				bashls = true,
 				lua_ls = true,
-				rust_analyzer = true,
+
+				rust_analyzer = {
+					settings = {
+						["rust-analyzer"] = {
+							inlayHints = {
+								chainingHints = true,
+								enable = true,
+								parameterHints = true,
+								typeHints = true,
+							},
+						},
+					},
+				},
 
 				cssls = true,
 

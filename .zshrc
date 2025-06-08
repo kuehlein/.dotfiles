@@ -115,3 +115,10 @@ path+=('/Users/uehleink/Library/Python/3.9/bin')
 export PATH
 
 [ -f "/Users/uehleink/.ghcup/env" ] && source "/Users/uehleink/.ghcup/env" # ghcup-env
+
+# bun completions
+[ -s "/Users/kyleuehlein/.bun/_bun" ] && source "/Users/kyleuehlein/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

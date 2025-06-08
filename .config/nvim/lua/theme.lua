@@ -32,6 +32,7 @@ function M.color_scheme()
 		Identifier = { fg = p.fg.purple },
 		Keyword = { fg = p.fg.red },
 		LineNr = { fg = p.fg.gray },
+		LspInlayHint = { bg = p.bg.blue, fg = p.fg.blue },
 		NonText = { fg = p.white },
 		Normal = { bg = p.bg.gray },
 		Pmenu = { bg = colors.gray[8] },

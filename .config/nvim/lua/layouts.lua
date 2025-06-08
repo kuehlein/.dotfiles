@@ -16,7 +16,7 @@ local colemak = function()
 	vim.keymap.set({ "n", "v" }, "T", "I", opts) -- (T)ype at bol replaces (I)nsert
 
 	vim.keymap.set({ "n", "v" }, "l", "e", opts) -- (l)ast replaces (e)nd
-	vim.keymap.set({ "n", "v" }, "h", "m", opts) -- (h)ighlight to remap marks
+	vim.keymap.set({ "n", "v" }, "h", "m", opts) -- (h)ighlight replaces (m)ark
 
 	-- vim.keymap.set('n', 'h', 'n', opts);          -- next match replaces (n)ext
 	-- vim.keymap.set('n', 'k', 'N', opts);          -- previous match replaces (N) prev
