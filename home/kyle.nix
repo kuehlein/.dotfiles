@@ -1,6 +1,8 @@
 # TODO: The config for this user should be oriented towards regular browsing/use.
 
 { pkgs, ... }: {
+  home.stateVersion = "25.05"; # TODO: not sure about this...
+
   programs.zsh = {
     enable = true;
     initExtra = ''
