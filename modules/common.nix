@@ -43,10 +43,7 @@
 
   services = {
     displayManager = {
-      ly = {
-        enable = true;
-        defaultSession = "sway";
-      };
+      ly.enable = true;
       sessionPackages = with pkgs; [ sway ]; # hyprland st
     };
     libinput = {
