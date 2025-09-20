@@ -47,7 +47,7 @@
         enable = true;
         defaultSession = "sway";
       };
-      sessionPackages with pkgs; [ sway ]; # hyprland st
+      sessionPackages = with pkgs; [ sway ]; # hyprland st
     };
     libinput = {
       enable = true;
