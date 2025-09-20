@@ -86,7 +86,7 @@
       output * bg #000000 solid_color
       input * {
         xkb_layout us
-        xkb_options ctrl:nocaps # Remaps Caps to Ctrl
+        xkb_options ctrl:nocaps
       }
 
       # Start a terminal
