@@ -1,6 +1,8 @@
 # TODO: This config should be oriented more towards super-user stuff
 
 { pkgs, ... }: {
+  home.stateVersion = "25.05"; # TODO: not sure about this...
+
   programs.zsh = {
     enable = true;
     initExtra = ''
