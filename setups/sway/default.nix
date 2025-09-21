@@ -92,6 +92,9 @@
       # Start a terminal
       bindsym $mod+Return exec kitty
 
+      # ???
+      bindsym $mod+d exec wofi --show drun
+
       # Ensures D-Bus sees keyring env
       exec dbus-activation-environment --all
     '';
@@ -104,8 +107,8 @@
       # Development
       gcc kitty nodejs python3
 
-      # Sway
-      swaylock waybar wayidle
+      # Desktop
+      swaylock waybar wayidle wofi
     ];
     wrapperFeatures.gtk = true;
   };
