@@ -19,18 +19,16 @@ in {
       font pango:Maple Mono Regular 10
 
       # Start the auth agent, if you don't use this you can comment out this line.
-      exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-      exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
+      # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+      # exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
       # Start the network manager applet, can comment out this line if you don't use network manager.
       exec nm-applet
 
       # =================================================================
 
-      #!!!!!!!!!!!!!!!!!!!!!! EDIT THIS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
       # ===================== WALLPAPER =================================
       # You can have different wp per monitor by changing the *
-      # to the specific display output. Make sure to edit the directory
-      # to your wallpaper!
+      # to the specific display output.
 
       output * bg ${wallpaper} fill
       # =================================================================
@@ -242,63 +240,3 @@ in {
 
   security.pam.services.swaylock = {};
 }
-
-# TODO: is this a better way to do this?
-# { config, lib, pkgs, ... }: let
-#   swayConfig = {
-#     modifier = "Mod4";
-#     floating_modifier = "Mod4";
-#     input = {
-#       "*" = {
-#         xkb_layout = "us";
-# 	xkb_options = "ctrl:nocaps";
-#       };
-#     };
-#     ouput = {
-#       "*" = { bg = "#000000 solid_color"; };
-#     };
-#     keybindings = {
-#       "${swayConfig.modifier}+Return" = "exec kitty";
-#       "${swayConfig.modifier}+Shift+space" = "move scratchpad";
-#       "${swayConfig.modifier}+space" = "scratchpad show";
-#       "${swayConfig.modifier}+0" = "workspace 0";
-#       "${swayConfig.modifier}+1" = "workspace 1";
-#       "${swayConfig.modifier}+2" = "workspace 2";
-#       "${swayConfig.modifier}+Shift+0" = "move container to workspace 0";
-#       "${swayConfig.modifier}+Shift+1" = "move container to workspace 1";
-#       "${swayConfig.modifier}+Shift+2" = "move container to workspace 2";
-#     };
-#   };
-#
-#   generateSwayConfig = cfg: lib.concatStringSep "\n" (lib.mapAttrsToList (section: values:
-#     if lib.isAttrs values then
-#       "${sectoin} {\n" + (lib.concatStringsSep "\n" (lib.mapAttrsToList (k: v: "  ${k} ${v}")) + "\n}")
-#     else
-#       "${section} ${values}"
-#   ) cfg);
-# in {
-#   programs.sway = {
-#     enable = true;
-#
-#     # TODO: how to do this??.......
-#     environment = {
-#       sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-#       systemPackages = with pkgs; [
-#         # Development
-# 	gcc nodejs python3
-#       ];
-#     };
-#     # .............................
-#
-#     extraPackages = with pkgs; [
-#       kitty
-#       swaylock
-#       waybar
-#       wayidle
-#     ];
-#
-#     security.pam.services.swaylock = {};
-#
-#     wrapperFeatures.gtk = true;
-#   };
-# }
