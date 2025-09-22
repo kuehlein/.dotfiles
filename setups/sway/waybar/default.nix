@@ -4,7 +4,7 @@
     systemPackages = with pkgs; [ waybar ];
   };
 
-  programs.waybar = {
-    enable = true; # this is redundant...?
-  };
+  # programs.waybar = {
+  #   enable = true; # this is redundant...?
+  # };
 }
