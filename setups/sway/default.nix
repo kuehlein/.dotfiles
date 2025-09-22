@@ -185,6 +185,9 @@ in {
       bindsym $mod+a focus parent
       # ==============================================================
 
+      exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
+      exec waybar
+
 
 
       # set $mod Mod4
