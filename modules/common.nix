@@ -83,4 +83,13 @@
       isNormalUser = true;
     };
   };
+
+  # TODO: not sure about this...
+  xdg.portal = {
+    enable = true;
+    config.common.default = [ "wlr" ];
+    config.sway.default = [ "wlr" ];
+    extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+    wlr.enable = true;
+  };
 }
