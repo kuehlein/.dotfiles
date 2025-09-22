@@ -29,7 +29,7 @@
       insensitive = false; # true?
       line_wrap = "word";
       lines = 8;
-      location = center;
+      location = "center";
       no_actions = true;
       prompt = "Search???";
       show_all = true;
