@@ -1,4 +1,6 @@
 { config, pkgs, ... }: {
+  environment.etc."xdg/wofi/style.css".source = ./style.css;
+
   # home.packages = let {
   #   inherit (config.programs.password-store) package enable;
   # } in {
