@@ -30,7 +30,7 @@
       # to the specific display output. Make sure to edit the directory
       # to your wallpaper!
 
-      output * bg "/home/username/Pictures/wallpaper.png" fill
+      output * bg "../../assets/sun.jpg" fill
       # =================================================================
 
 
