@@ -1,5 +1,5 @@
 { config, pkgs, ... }: let
-  wallpaper = ../../assets/sun.jpg
+  wallpaper = ../../assets/sun.jpg;
 in {
   imports = [ ./waybar ./wofi ];
 
