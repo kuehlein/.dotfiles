@@ -1,6 +1,6 @@
 { config, pkgs, ... }: {
   environment = {
-    etc."xdg/waybar/config".source = ./config';
+    etc."xdg/waybar/config".source = ./config;
     etc."xdg/waybar/style.css".source = ./style.css;
     systemPackages = with pkgs; [ waybar ];
   };
