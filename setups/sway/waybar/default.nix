@@ -1,7 +1,7 @@
 { config, pkgs, ... }: {
   environment = {
     # etc."xdg/waybar/config".source = ./config;
-    etc."xdg/waybar/config".source = ''
+    etc."xdg/waybar/config".text = ''
       {
         "layer": "bot",
         "spacing": 0,
