@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  import = [ ./waybar ./wofi ];
+  imports = [ ./waybar ./wofi ];
 
   environment = {
     # TODO: configure without using `.text`?
