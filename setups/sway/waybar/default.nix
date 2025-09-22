@@ -1,5 +1,5 @@
 { config, pkgs, ... }: {
-  # TODO: not sure how to do this..
+  environment.etc."xdg/waybar/style.css".source = ./style.css;
 
   programs.waybar = {
     enable = true; # this is redundant...?
