@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -85,11 +85,12 @@
   };
 
   # TODO: not sure about this...
-  xdg.portal = {
-    enable = true;
-    config.common.default = [ "wlr" ];
-    config.sway.default = [ "wlr" ];
-    extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
-    wlr.enable = true;
-  };
+  xdg.portal.enable = false;
+  # xdg.portal = {
+  #   enable = true;
+  #   # config.common.default = [ "wlr" ];
+  #   config.sway.default = lib.mkForce [ "wlr" ];
+  #   extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
+  #   wlr.enable = true;
+  # };
 }
