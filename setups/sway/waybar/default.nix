@@ -6,6 +6,7 @@
 
   programs.waybar = {
     enable = true;
+    systemd.enable = true; # ??
     settings = {
       mainbar = {
         height = 0; # 26;
