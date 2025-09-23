@@ -84,7 +84,7 @@ in {
       # for instance, if you want spanish; or any other.
       # You toggle between the languages with ALT+SHIFT
       input * {
-        xkb_layout "us,se"
+        xkb_layout "us,cn"
         xkb_options "grp:alt_shift_toggle"
       }
 
@@ -94,10 +94,10 @@ in {
 
       # ===================== THE INFO/TASKBAR ==========================
       # Simple, this just starts waybar which is what we are using.
-      exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
       bar {
         swaybar_command waybar
       }
+      # exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
       # =================================================================
 
 
