@@ -4,9 +4,9 @@
     # systemPackages = with pkgs; [ waybar ];
   };
 
-  programs.waybar = {
+  # programs.waybar = {
+  environment."xdg/waybar/config".text = buildins.toJSON {
     enable = true;
-    systemd.enable = true; # ??
     settings = {
       mainbar = {
         height = 0; # 26;
