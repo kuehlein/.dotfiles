@@ -5,7 +5,7 @@
   };
 
   programs.waybar = {
-    # enable = true;
+    enable = true;
     settings = {
       mainbar = {
         height = 0; # 26;
