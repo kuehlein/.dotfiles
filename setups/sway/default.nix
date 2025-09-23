@@ -1,7 +1,10 @@
 { config, pkgs, ... }: let
   wallpaper = ../../assets/sun.jpg;
 in {
-  # imports = [ ./waybar ./wofi ];
+  imports = [
+    ./waybar
+    # ./wofi
+  ];
 
   environment = {
     # TODO: configure without using `.text`?
