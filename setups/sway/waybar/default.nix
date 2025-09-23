@@ -7,39 +7,41 @@
 
   programs.waybar = {
     enable = true;
-    mainbar = {
-      layer = "top";
-      position = "top";
-      height = 26;
-      output = [ "eDP-1" ];
-    };
+    settings = {
+      mainbar = {
+        layer = "top";
+        position = "top";
+        height = 26;
+        output = [ "eDP-1" ];
 
-    modules-left = [ "sway/workspaces" "sway/mode" ];
-    modules-right = [ "sway/language" "clock" "battery" ];
+        modules-left = [ "sway/workspaces" "sway/mode" ];
+        modules-right = [ "sway/language" "clock" "battery" ];
 
-    "sway/workspaces" = {
-      all-outputs = true;
-      disable-scroll = true;
-      persistent_workspaces = {
-        "1" = [];
-	"2" = [];
-	"3" = [];
-	"4" = [];
+        "sway/workspaces" = {
+          all-outputs = true;
+          disable-scroll = true;
+          persistent_workspaces = {
+            "1" = [];
+            "2" = [];
+            "3" = [];
+            "4" = [];
+          };
+          disable-click = true;
+        };
+
+        "sway/mode" = {
+          tooltip = false;
+        };
+
+        "clock" = {
+          interval = 60;
+          format = "{:%a %d %m %I:%M}";
+        };
+
+        "battery" = {
+          tooltip = false;
+        };
       };
-      disable-click = true;
-    };
-
-    "sway/mode" = {
-      tooltip = false;
-    };
-
-    "clock" = {
-      interval = 60;
-      format = "{:%a %d %m %I:%M}";
-    };
-
-    "battery" = {
-      tooltip = false;
     };
   };
 }
