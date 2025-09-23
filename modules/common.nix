@@ -86,7 +86,7 @@
 
   # TODO: not sure about this...
   xdg.portal = {
-    enable = lib.mkForce false;
+    enable = lib.mkForce false; # true
     # config.common.default = [ "wlr" ];
     # config.sway.default = lib.mkForce [ "wlr" ];
     # extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
