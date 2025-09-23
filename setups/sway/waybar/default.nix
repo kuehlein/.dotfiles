@@ -1,11 +1,5 @@
-{ config, pkgs, ... }: {
-  environment = {
-    etc."xdg/waybar/style.css".source = ./style.css;
-    # systemPackages = with pkgs; [ waybar ];
-  };
-
-  # programs.waybar = {
-  environment."xdg/waybar/config".text = buildins.toJSON {
+{ config, pkgs, ... }: let
+  waybarSettings = {
     enable = true;
     settings = {
       mainbar = {
@@ -102,4 +96,13 @@
       };
     };
   };
+  waybarConfig = builtins.toJSON waybarSettings;
+in {
+  environment = {
+    etc."xdg/waybar/style.css".source = ./style.css;
+    # systemPackages = with pkgs; [ waybar ];
+  };
+
+  # programs.waybar = {
+  environment."xdg/waybar/config".text = waybarConfig;
 }
