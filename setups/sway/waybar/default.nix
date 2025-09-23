@@ -55,7 +55,7 @@
         };
 
         # TODO: i dont think i want this...
-        "custom/applauncher": {
+        "custom/applauncher" = {
           format = "〇";
           on-click = "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15";
           tooltip = false;
