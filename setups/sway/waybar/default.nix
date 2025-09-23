@@ -10,7 +10,7 @@
     settings = {
       mainbar = {
         height = 0; # 26;
-        layer = "bot"; # "top";
+        layer = "bottom"; # "bot"; # "top";
 	margin-bottom = 0;
 	margin-left = 500;
 	margin-right = 500;
