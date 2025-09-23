@@ -21,11 +21,11 @@
 	  "custom/applauncher"
 	];
         modules-right = [
-	  # "network"
-	  # "battery"
-	  # "pulseaudio"
-	  # "tray"
-	  # "clock"
+	  "network"
+	  "battery"
+	  "pulseaudio"
+	  "tray"
+	  "clock"
 
 	  # "sway/language" # ???
 	];
@@ -55,44 +55,44 @@
           on-click = "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15";
           tooltip = false;
         };
-        # tray = {
-        #   spacing = 10;
-        #   tooltip = false;
-        # };
-        # clock = {
-        #   format = "󰅐 {:%H:%M}";
-        #   tooltip = false;
-        # };
-        # network = {
-        #   format-wifi = " {bandwidthDownBits}";
-        #   format-ethernet = " {bandwidthDownBits}";
-        #   format-disconnected = "󰤮 No Network";
-        #   interval = 5;
-        #   tooltip = false;
-        # };
-        # pulseaudio = {
-        #   scroll-step = 5;
-        #   max-volume = 150;
-        #   format = "{icon} {volume}%";
-        #   format-bluetooth = "{icon} {volume}%";
-        #   format-icons = [ "" "" " " ];
-        #   nospacing = 1;
-        #   format-muted = " ";
-        #   on-click = "pavucontrol";
-        #   tooltip = false;
-        # };
-        # battery = {
-        #   states = {
-        #     warning = 30;
-        #     critical = 15;
-        #   };
-        #   format = "{icon} {capacity}%";
-        #   format-charging = "󰂄 {capacity}%";
-        #   format-plugged = "󰂄{capacity}%";
-        #   format-alt = "{icon} {time}";
-        #   format-full = "󱈑 {capacity}%";
-        #   format-icons = [ "󱊡" "󱊢" "󱊣" ];
-        # };
+        tray = {
+          spacing = 10;
+          tooltip = false;
+        };
+        clock = {
+          format = "󰅐 {:%H:%M}";
+          tooltip = false;
+        };
+        network = {
+          format-wifi = " {bandwidthDownBits}";
+          format-ethernet = " {bandwidthDownBits}";
+          format-disconnected = "󰤮 No Network";
+          interval = 5;
+          tooltip = false;
+        };
+        pulseaudio = {
+          scroll-step = 5;
+          max-volume = 150;
+          format = "{icon} {volume}%";
+          format-bluetooth = "{icon} {volume}%";
+          format-icons = [ "" "" " " ];
+          nospacing = 1;
+          format-muted = " ";
+          on-click = "pavucontrol";
+          tooltip = false;
+        };
+        battery = {
+          states = {
+            warning = 30;
+            critical = 15;
+          };
+          format = "{icon} {capacity}%";
+          format-charging = "󰂄 {capacity}%";
+          format-plugged = "󰂄{capacity}%";
+          format-alt = "{icon} {time}";
+          format-full = "󱈑 {capacity}%";
+          format-icons = [ "󱊡" "󱊢" "󱊣" ];
+        };
       };
     };
   };
