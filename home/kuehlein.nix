@@ -4,7 +4,10 @@
   home.stateVersion = "25.05"; # TODO: not sure about this...
 
   # TODO: does this have to be here?
-  imports = [ ../setups/sway/waybar/default.nix ../setups/sway/wofi/default.nix ];
+  imports = [
+    ../setups/sway/waybar/default.nix
+    # ../setups/sway/wofi/default.nix
+  ];
 
   programs.zsh = {
     enable = true;
