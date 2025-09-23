@@ -94,6 +94,7 @@ in {
 
       # ===================== THE INFO/TASKBAR ==========================
       # Simple, this just starts waybar which is what we are using.
+      exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
       bar {
         swaybar_command waybar
       }
@@ -185,8 +186,7 @@ in {
       bindsym $mod+a focus parent
       # ==============================================================
 
-      exec_always dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=sway
-      exec waybar
+      # exec waybar
 
 
 
