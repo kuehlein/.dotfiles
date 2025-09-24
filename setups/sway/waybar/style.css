@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  background-image: linear-gradient(to bottom, #141216, 100%); /* dark color */
+  background-image: linear-gradient(to bottom, #141216 100%); /* dark color */
   border-radius: 14px;
   border-style: none;
   padding: 0px;
@@ -35,7 +35,7 @@ window#waybar {
 }
 
 #pulseaudio {
-  background-image: linear-gradient(to bottom, #27232b);
+  background-image: linear-gradient(to bottom, #27232b 100%);
   border-radius: 8px;
   border-style: none;
   color: #d8cab8;
@@ -66,7 +66,7 @@ window#waybar {
   padding: 4px;
 }
 #tray menu menuitem {
-  background-image: linear-gradient(to bottom, #27232b);
+  background-image: linear-gradient(to bottom, #27232b 100%);
   border-color: #27232b;
   border-radius: 4px;
   border-style: solid;
@@ -89,7 +89,7 @@ window#waybar {
   transition-duration: 120ms;
 }
 #workspaces button:hover {
-  color: #8f565e1;
+  color: #8f56e1;
   transition-duration: 120ms;
 }
 #workspaces button.focused {
