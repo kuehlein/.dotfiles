@@ -14,6 +14,10 @@ in {
     sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   };
 
+  fonts.packages = with pkgs; [
+    maple-mono-NF
+  ];
+
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [

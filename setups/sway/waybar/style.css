@@ -1,7 +1,7 @@
 * {
   background: transparent;
   border-radius: 9px;
-  font-family: Maple Mono;
+  font-family: "MapleMono NF", "Nerd Font Symbols", sans-serif mono;
   font-size: 14px;
   padding: 0px;
 }
@@ -24,6 +24,7 @@ window#waybar {
   border-radius: 8px;
   border-style: none;
   color: #d8cab8; /* "selected foreground color part of theme" */
+  font-family: "MapleMono NF", "Nerd Font Symbols", sans-serif mono;
   margin: 6px;
   margin-right: 0px;
   padding: 4px 8px;
