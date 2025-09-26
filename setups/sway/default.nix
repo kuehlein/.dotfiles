@@ -15,7 +15,7 @@ in {
   };
 
   fonts.packages = with pkgs; [
-    maple-mono-NF
+    maple-mono.NF
   ];
 
   programs.sway = {
