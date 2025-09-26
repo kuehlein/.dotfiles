@@ -25,8 +25,6 @@
         "pulseaudio"
         "tray"
         "clock"
-
-        # "sway/language" # ???
       ];
 
       # "hyprland/workspaces" = {
@@ -39,16 +37,9 @@
         all-outputs = true;
         disable-scroll = true;
         tooltip = false;
-        # persistent_workspaces = {
-        #   "1" = [];
-        #   "2" = [];
-        #   "3" = [];
-        #   "4" = [];
-        # };
-        # disable-click = true;
       };
 
-      # TODO: i dont think i want this...
+      # TODO: keep this?
       "custom/applauncher" = {
         format = "〇";
         on-click = "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15";
@@ -63,9 +54,9 @@
         tooltip = false;
       };
       network = {
-        format-wifi = " {bandwidthDownBits}";
-        format-ethernet = " {bandwidthDownBits}";
-        format-disconnected = "󰤮 No Network";
+        format-wifi = "  {bandwidthDownBits}";
+        format-ethernet = "  {bandwidthDownBits}";
+        format-disconnected = "󰤮  No Network";
         interval = 5;
         tooltip = false;
       };
@@ -88,7 +79,7 @@
         format = "{icon} {capacity}%";
         format-alt = "{icon} {time}";
         format-charging = "󰂄 {capacity}%";
-        format-plugged = "󰂄{capacity}%";
+        format-plugged = "󰂄 {capacity}%";
         format-full = "󱈑 {capacity}%";
         format-icons = [ "󱊡" "󱊢" "󱊣" ];
       };
