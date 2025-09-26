@@ -2,8 +2,8 @@
   environment = {
     etc."xdg/waybar/style.css".source = ./style.css;
     etc."xdg/waybar/config".text = builtins.toJSON {
-      height = 26; # 0;
-      layer = "top"; # "bot"; # "top";
+      height = 26;
+      layer = "top";
       margin-bottom = 0;
       margin-left = 500;
       margin-right = 500;
