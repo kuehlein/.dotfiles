@@ -17,14 +17,6 @@ exec nm-applet
 # =================================================================
 
 
-# ===================== WALLPAPER =================================
-# You can have different wp per monitor by changing the *
-# to the specific display output.
-
-output * bg ${wallpaper} fill
-# =================================================================
-
-
 # ===================== APP VARIABLES =============================
 # These are the applications we use, and also where I set the 
 # mod key (in this case it's the super key, i.e the windows key.)
@@ -70,8 +62,7 @@ client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 # You toggle between the languages with ALT+SHIFT
 input * {
   xkb_layout "us,cn"
-  xkb_options "grp:alt_shift_toggle"
-  # xkb_options ctrl:nocaps
+  xkb_options "grp:alt_shift_toggle, ctrl:nocaps"
 }
 # =================================================================
 
