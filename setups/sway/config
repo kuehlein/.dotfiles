@@ -6,7 +6,7 @@
 
 
 # ===================== BASIC START-UP STUFF ======================
-# Set the default font used by sway, I like maple mono.
+# Set the default font used by sway
 font pango:Maple Mono Regular 10
 
 # Start the auth agent, if you don't use this you can comment out this line.
