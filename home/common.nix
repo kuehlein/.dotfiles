@@ -18,13 +18,13 @@
 
   programs.chromium = {
     enable = true;
+    commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
     extensions = [
       { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
       { id = "gafhhkghbfjjkeiendhlofajokpaflmk"; } # Lace Wallet
       { id = "ondecobpcidaehknoegeapmclapnkgcl"; } # JSON Viewer
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
     ];
-    extra-opts.commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
     package = pkgs.brave;
   };
 }
