@@ -7,12 +7,18 @@
     systemd-boot.enable = true; # TODO: consider not using systemd... (grub)?
   };
 
-  environment.systemPackages = with pkgs; [
+  environment.systemPackages = with pkgs; let
+    # Clear all Brave browsing data on application close
+    brave-wrapped = pkgs.writeShellScriptBin "brave" ''
+      ${brave}/bin/brave "$@"
+      rm -rf ~/.config/BraveSoftware/Brave-Browser/Default/{Cache,Cookies,History,Site\ Data}
+    '';
+  in [
     # Apps
-    inkscape libreoffice vlc
+    inkscape libreoffice proton-pass vlc
 
     # Browsing
-    brave mullvad mullvad-browser mullvad-vpn tor tor-browser
+    brave-wrapped mullvad mullvad-browser mullvad-vpn tor tor-browser
 
     # Development
     git neovim

@@ -61,13 +61,16 @@ client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 # for instance, if you want spanish; or any other.
 # You toggle between the languages with ALT+SHIFT
 input * {
-  repeat_delay 100 # in ms
-  repeat_rate 50 # 50x per second
   xkb_layout "us,cn"
   xkb_options "ctrl:nocaps, grp:alt_shift_toggle"
 }
 
-input "2:7:SynPS\/2_Synaptics_Touchpad" {
+input type:keyboard {
+  repeat_delay 100 # in ms
+  repeat_rate 50 # 50x per second
+}
+
+input type:touchpad {
   natural_scroll enabled
 }
 # =================================================================

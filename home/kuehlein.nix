@@ -1,13 +1,9 @@
 # TODO: This config should be oriented more towards super-user stuff
 
 { pkgs, ... }: {
-  home.stateVersion = "25.05"; # TODO: not sure about this...
+  home.stateVersion = "25.05";
 
-  # TODO: does this have to be here?
-  # imports = [
-  #   # ../setups/sway/waybar/default.nix
-  #   # ../setups/sway/wofi/default.nix
-  # ];
+  imports = [ ./common.nix ];
 
   programs.zsh = {
     enable = true;
