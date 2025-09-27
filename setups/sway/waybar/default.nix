@@ -5,20 +5,14 @@
       height = 26;
       layer = "top";
       margin-bottom = 0;
-      margin-left = 500;
-      margin-right = 500;
+      margin-left = 15; # 500;
+      margin-right = 15; # 500;
       margin-top = 15;
-      # output = [ "eDP-1" ];
       position = "top";
       spacing = 0;
 
-      modules-left = [
-        # "hyprland/mode" # ???
-        "sway/workspaces"
-      ];
-      modules-center = [
-        "custom/applauncher"
-      ];
+      modules-left = [ "sway/workspaces" ];
+      modules-center = [ "custom/applauncher" ];
       modules-right = [
         "network"
         "battery"
@@ -27,24 +21,18 @@
         "clock"
       ];
 
-      # "hyprland/workspaces" = {
-      #   disable-scroll = true;
-      #   all-outputs = false;
-      #   tooltip = false;
-      # };
-
       "sway/workspaces" = {
         all-outputs = true;
         disable-scroll = true;
         tooltip = false;
       };
 
-      # TODO: keep this?
       "custom/applauncher" = {
         format = "〇";
         on-click = "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15";
         tooltip = false;
       };
+
       tray = {
         spacing = 10;
         tooltip = false;
@@ -84,6 +72,7 @@
         format-icons = [ "󱊡" "󱊢" "󱊣" ];
       };
     };
+
     systemPackages = with pkgs; [ waybar ];
   };
 }
