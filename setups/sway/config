@@ -66,8 +66,8 @@ input * {
 }
 
 input type:keyboard {
-  repeat_delay 100 # in ms
-  repeat_rate 50 # 50x per second
+  repeat_delay 100
+  repeat_rate 50
 }
 
 input type:touchpad {
