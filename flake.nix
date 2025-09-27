@@ -9,7 +9,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }: {
+  outputs = { home-manager, nixpkgs, self, ... }: {
     nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
