@@ -66,7 +66,7 @@ input * {
 }
 
 input type:keyboard {
-  repeat_delay 100
+  repeat_delay 200
   repeat_rate 50
 }
 
