@@ -24,9 +24,7 @@
       { id = "ondecobpcidaehknoegeapmclapnkgcl"; } # JSON Viewer
       { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
     ];
-    extra-opts = {
-      "--enable-features=WebUIDarkMode" = true;
-    };
+    extra-opts.commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
     package = pkgs.brave;
   };
 }
