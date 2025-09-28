@@ -67,10 +67,6 @@
       IdleActionSec = 300; # 5 minutes before sleep
       LockScreen = true; # Display lock screen after sleep
     };
-    .extraConfig = ''
-      IdleAction=suspend
-      IdleActionSec=300
-    '';
     openssh.enable = true;
     pipewire = {
       enable = true;
