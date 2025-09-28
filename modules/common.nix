@@ -60,12 +60,16 @@
       enable = true;
       touchpad.naturalScrolling = true; # Inverts scroll direction
     };
-    logind.extraConfig = ''
-      HandleLidSwitch=suspend
-      HandleLidSwitchDocked=suspend
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend"; # Sleep on close laptop lid
+      HandleLidSwitchDocked = "ignore";
+      IdleAction = "suspend";
+      IdleActionSec = 300; # 5 minutes before sleep
+      LockScreen = true; # Display lock screen after sleep
+    };
+    .extraConfig = ''
       IdleAction=suspend
       IdleActionSec=300
-      LockScreen=true
     '';
     openssh.enable = true;
     pipewire = {
