@@ -38,6 +38,8 @@
     networkmanager.enable = true;
   };
 
+  powerManagement.enable = true;
+
   programs = {
     gnupg.agent = {
       enable = true;
@@ -54,10 +56,17 @@
       ly.enable = true;
       sessionPackages = with pkgs; [ sway ]; # hyprland st
     };
-    # libinput = {
-    #   enable = true;
-    #   touchpad.naturalScrolling = true; # Inverts scroll direction
-    # };
+    libinput = {
+      enable = true;
+      touchpad.naturalScrolling = true; # Inverts scroll direction
+    };
+    logind.extraConfig = ''
+      HandleLidSwitch=suspend
+      HandleLidSwitchDocked=suspend
+      IdleAction=suspend
+      IdleActionSec=300
+      LockScreen=true
+    '';
     openssh.enable = true;
     pipewire = {
       enable = true;
