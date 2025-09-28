@@ -70,9 +70,9 @@ input type:keyboard {
   repeat_rate 50
 }
 
-input type:touchpad {
-  natural_scroll enabled
-}
+# input type:touchpad {
+#   natural_scroll enabled
+# }
 # =================================================================
 
 

@@ -8,17 +8,19 @@
   };
 
   environment.systemPackages = with pkgs; let
-    # Clear all Brave browsing data on application close
-    brave-wrapped = pkgs.writeShellScriptBin "brave" ''
-      ${brave}/bin/brave "$@"
-      rm -rf ~/.config/BraveSoftware/Brave-Browser/Default/{Cache,Cookies,History,Site\ Data}
-    '';
+    # TODO: do we want this?
+    # # Clear all Brave browsing data on application close
+    # brave-wrapped = pkgs.writeShellScriptBin "brave" ''
+    #   ${brave}/bin/brave "$@"
+    #   rm -rf ~/.config/BraveSoftware/Brave-Browser/Default/{Cache,Cookies,History,Site\ Data}
+    # '';
   in [
     # Apps
     inkscape libreoffice proton-pass vlc
 
     # Browsing
-    brave-wrapped mullvad mullvad-browser mullvad-vpn tor tor-browser
+    brave mullvad mullvad-browser mullvad-vpn tor tor-browser
+    # brave-wrapped
 
     # Development
     git neovim
@@ -52,10 +54,10 @@
       ly.enable = true;
       sessionPackages = with pkgs; [ sway ]; # hyprland st
     };
-    libinput = {
-      enable = true;
-      touchpad.naturalScrolling = true; # Inverts scroll direction
-    };
+    # libinput = {
+    #   enable = true;
+    #   touchpad.naturalScrolling = true; # Inverts scroll direction
+    # };
     openssh.enable = true;
     pipewire = {
       enable = true;
@@ -91,11 +93,5 @@
   };
 
   # TODO: not sure about this...
-  xdg.portal = {
-    enable = lib.mkForce false; # true
-    # config.common.default = [ "wlr" ];
-    # config.sway.default = lib.mkForce [ "wlr" ];
-    # extraPortals = with pkgs; [ xdg-desktop-portal-wlr ];
-    # wlr.enable = true;
-  };
+  xdg.portal.enable = lib.mkForce false;
 }
