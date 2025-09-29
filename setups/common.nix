@@ -1,17 +1,26 @@
 { config, pkgs, ... }: let
   chromeExtensionClientURL = "https://clients2.google.com/service/update2/crx";
+
+  darkReaderID = "eimadpbcbfnmbkopoojfekhnkhdbieeh";
+  jsonViewerID = "ondecobpcidaehknoegeapmclapnkgcl";
+  laceWalletID = "gafhhkghbfjjkeiendhlofajokpaflmk";
+  protonPassID = "ghmbeldphafepmbegfdlkpapadhbakde";
 in {
   environment = {
-    # Install chrome extensions in Brave
     etc."brave/policies/managed/policies.json".text = builtins.toJSON {
+      BraveRewardsDisabled = true;
+      BraveTalkDisabled = true;
       ExtensionInstallForcelist = [
-        "eimadpbcbfnmbkopoojfekhnkhdbieeh;${chromeExtensionClientURL}" # Dark Reader
-        "gafhhkghbfjjkeiendhlofajokpaflmk;${chromeExtensionClientURL}" # Lace Wallet
-        "ondecobpcidaehknoegeapmclapnkgcl;${chromeExtensionClientURL}" # JSON Viewer
-        "ghmbeldphafepmbegfdlkpapadhbakde;${chromeExtensionClientURL}" # Proton Pass
+        "${darkReaderID};${chromeExtensionClientURL}"
+        "${jsonViewerID};${chromeExtensionClientURL}"
+        "${laceWalletID};${chromeExtensionClientURL}"
+        "${protonPassID};${chromeExtensionClientURL}"
       ];
+      ExtensionSettings = {
+        "${darkReaderID}" = { toolbar_pin = true; };
+        "${laceWalletID}" = { toolbar_pin = true; };
+        "${protonPassID}" = { toolbar_pin = true; };
+      };
     };
-
-    systemPackages = with pkgs; [ waybar ];
   };
 }
