@@ -46,7 +46,14 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-curses;
     };
-    zsh.enable = true;
+    zsh = {
+      enable = true;
+      initExtra = ''
+        if [[ -n $PS1 && -z $TMUX ]]; then
+	  fastfetch
+	fi
+      '';
+    };
   };
 
   security.polkit.enable = true;
