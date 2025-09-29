@@ -83,6 +83,7 @@
       description = "TODO...";
       extraGroups = [ "networkmanager" "wheel" ];
       isNormalUser = true;
+      shell = pkgs.zsh;
     };
 
     kuehlein = {
@@ -98,6 +99,7 @@
       ];
       initialPassword = "changeme";
       isNormalUser = true;
+      shell = pkgs.zsh;
     };
   };
 
