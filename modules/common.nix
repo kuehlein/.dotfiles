@@ -46,6 +46,7 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-curses;
     };
+    neovim = ./neovim;
     zsh.enable = true;
   };
 
