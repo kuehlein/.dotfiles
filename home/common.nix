@@ -16,15 +16,29 @@
     };
   };
 
-  programs.chromium = {
-    enable = true;
-    commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
-    extensions = [
-      { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
-      { id = "gafhhkghbfjjkeiendhlofajokpaflmk"; } # Lace Wallet
-      { id = "ondecobpcidaehknoegeapmclapnkgcl"; } # JSON Viewer
-      { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
-    ];
-    package = pkgs.brave;
+  programs = {
+    chromium = {
+      enable = true;
+      commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
+      extensions = [
+        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
+        { id = "gafhhkghbfjjkeiendhlofajokpaflmk"; } # Lace Wallet
+        { id = "ondecobpcidaehknoegeapmclapnkgcl"; } # JSON Viewer
+        { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
+      ];
+      package = pkgs.brave;
+    };
+    zsh = {
+      enable = true;
+      initExtra = ''
+        if [ -z "$SSH_AUTH_SOCK" ]; then
+          export SSH_AUTH_SOCK=$(gnome-keyright-daemon --start --components=ssh | grep SSH_AUTH_SOCK | cut -d= -f2)
+        fi
+
+        if [[ -n $PS1 && -z $TMUX ]]; then
+	  fastfetch
+	fi
+      '';
+    };
   };
 }
