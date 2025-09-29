@@ -16,6 +16,7 @@
         ./configuration.nix
 	./modules/common.nix
 
+        ./setups/common.nix
 	./setups/sway/default.nix
 	# ./setups/hyprland/default.nix
 	# ./setups/dwm/default.nix

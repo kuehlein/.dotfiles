@@ -6,6 +6,11 @@
 
   home.file.".config/BraveSoftware/Brave-Browser/Default/Preferences".text = builtins.toJSON {
     brave = {
+      new_tab_page.show_rewards = false;
+      rewards = {
+        badge_text = "";
+	show_brave_rewards_button_in_location_bar = false;
+      };
       theme_type = 2; # Dark theme
     };
     sync = {
@@ -19,25 +24,20 @@
   programs = {
     chromium = {
       enable = true;
-      commandLineArgs = [ "--enable-features=WebUIDarkMode" ];
-      extensions = [
-        { id = "eimadpbcbfnmbkopoojfekhnkhdbieeh"; } # Dark Reader
-        { id = "gafhhkghbfjjkeiendhlofajokpaflmk"; } # Lace Wallet
-        { id = "ondecobpcidaehknoegeapmclapnkgcl"; } # JSON Viewer
-        { id = "ghmbeldphafepmbegfdlkpapadhbakde"; } # Proton Pass
-      ];
+      commandLineArgs = [ "--enable-features=WebUIDarkMode,HeuristicMemorySaver" ];
       package = pkgs.brave;
     };
     zsh = {
       enable = true;
+      # TODO: move this to separate file?
       initContent = ''
-        if [ -z "$SSH_AUTH_SOCK" ]; then
+        if [[ -z "$SSH_AUTH_SOCK" ]]; then
           export SSH_AUTH_SOCK=$(gnome-keyright-daemon --start --components=ssh | grep SSH_AUTH_SOCK | cut -d= -f2)
         fi
 
         if [[ -n $PS1 && -z $TMUX ]]; then
-	  fastfetch
-	fi
+          fastfetch
+        fi
       '';
     };
   };
