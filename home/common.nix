@@ -30,7 +30,7 @@
     };
     zsh = {
       enable = true;
-      initExtra = ''
+      initContent = ''
         if [ -z "$SSH_AUTH_SOCK" ]; then
           export SSH_AUTH_SOCK=$(gnome-keyright-daemon --start --components=ssh | grep SSH_AUTH_SOCK | cut -d= -f2)
         fi
