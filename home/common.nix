@@ -6,11 +6,6 @@
 
   home.file.".config/BraveSoftware/Brave-Browser/Default/Preferences".text = builtins.toJSON {
     brave = {
-      new_tab_page.show_rewards = false;
-      rewards = {
-        badge_text = "";
-	show_brave_rewards_button_in_location_bar = false;
-      };
       theme_type = 2; # Dark theme
     };
     sync = {
