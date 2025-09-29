@@ -17,9 +17,9 @@ in {
         "${protonPassID};${chromeExtensionClientURL}"
       ];
       ExtensionSettings = {
-        "${darkReaderID}" = { toolbar_pin = true; };
-        "${laceWalletID}" = { toolbar_pin = true; };
-        "${protonPassID}" = { toolbar_pin = true; };
+        "${darkReaderID}" = { toolbar_pin = "force_pinned"; };
+        "${laceWalletID}" = { toolbar_pin = "force_pinned"; };
+        "${protonPassID}" = { toolbar_pin = "force_pinned"; };
       };
     };
   };
