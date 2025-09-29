@@ -4,7 +4,7 @@ in {
   environment = {
     # Install chrome extensions in Brave
     etc."brave/policies/managed/policies.json".text = builtins.toJSON {
-      ExtensionInstallForceList = [
+      ExtensionInstallForcelist = [
         "eimadpbcbfnmbkopoojfekhnkhdbieeh;${chromeExtensionClientURL}" # Dark Reader
         "gafhhkghbfjjkeiendhlofajokpaflmk;${chromeExtensionClientURL}" # Lace Wallet
         "ondecobpcidaehknoegeapmclapnkgcl;${chromeExtensionClientURL}" # JSON Viewer
