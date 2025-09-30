@@ -1,4 +1,6 @@
 { config, lib, pkgs, ... }: {
+  # imports = [ ./neovim ];
+
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -46,7 +48,7 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-curses;
     };
-    neovim = ./neovim;
+    # neovim = ./neovim;
     zsh.enable = true;
   };
 
