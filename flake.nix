@@ -9,29 +9,44 @@
     };
   };
 
-  outputs = { home-manager, nixpkgs, self, ... }: {
-    nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
+  outputs = { home-manager, nixpkgs, self, ... }@inputs:
+    let
       system = "x86_64-linux";
-      modules = [
-        ./configuration.nix
-	./modules/common.nix
+      pkgs = import nixpkgs { inherit system; };
+    in {
+      # TODO: do we want something like this?
+      # i think this replaces the `home-manager.nixosModules.home-manager` bit below
+	#      homeConfigurations."???" =
+	#        inputs.home-manager.lib.homeManagerConfiguration {
+	#   inherit pkgs;
+	#
+	#   modules = [ ./home/kuehlein.nix ];
+	#
+	#   extraSpecialArgs = { inherit inputs };
+	# };
 
-        ./setups/common.nix
-	./setups/sway/default.nix
-	# ./setups/hyprland/default.nix
-	# ./setups/dwm/default.nix
+      nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        modules = [
+          ./configuration.nix
+	  ./modules/common.nix
 
-	home-manager.nixosModules.home-manager
-	{
-	  home-manager = {
-	    backupFileExtension = "backup";
-	    useGlobalPkgs = true; # Share system pkgs.
-	    useUserPackages = true; # Install user pkgs to profile.
-	    users.kuehlein = import ./home/kuehlein.nix;
-	    users.kyle = import ./home/kyle.nix;
-	  };
-	}
-      ];
+          ./setups/common.nix
+	  ./setups/sway/default.nix
+	  # ./setups/hyprland/default.nix
+	  # ./setups/dwm/default.nix
+
+	  home-manager.nixosModules.home-manager
+  	  {
+	    home-manager = {
+	      backupFileExtension = "backup";
+	      useGlobalPkgs = true; # Share system pkgs.
+	      useUserPackages = true; # Install user pkgs to profile.
+	      users.kuehlein = import ./home/kuehlein.nix;
+	      users.kyle = import ./home/kyle.nix;
+	    };
+	  }
+        ];
+      };
     };
-  };
 }

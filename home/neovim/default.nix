@@ -25,7 +25,7 @@
       #   plenary-nvim;        # Telescope dependency
       # ];
 
-      extraLuaConfig = builtins.readFile ./init.lua;
+      # extraLuaConfig = builtins.readFile ./init.lua;
     };
   };
 
