@@ -28,7 +28,7 @@
     git neovim
 
     # Misc.
-    fastfetch grim mako slurp wl-clipboard
+    fastfetch grim lm_sensors mako slurp wl-clipboard
 
     # Utilities
     bat curl fd htop ripgrep tmux tree unzip wget zip
