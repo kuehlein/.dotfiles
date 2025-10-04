@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ inputs, pkgs, ... }: {
   imports = [
     inputs.neovim-config.homeManagerModules.default
   ];
