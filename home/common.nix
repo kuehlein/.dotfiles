@@ -1,4 +1,8 @@
 { pkgs, ... }: {
+  imports = [
+    inputs.neovim-config.homeManagerModules.default
+  ];
+
   # Tell applications that use the "system theme" to use a dark theme
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
