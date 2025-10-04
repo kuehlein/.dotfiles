@@ -1,6 +1,4 @@
 { config, lib, pkgs, ... }: {
-  # imports = [ ./neovim ];
-
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -9,14 +7,7 @@
     systemd-boot.enable = true; # TODO: consider not using systemd... (grub)?
   };
 
-  environment.systemPackages = with pkgs; let
-    # TODO: do we want this?
-    # # Clear all Brave browsing data on application close
-    # brave-wrapped = pkgs.writeShellScriptBin "brave" ''
-    #   ${brave}/bin/brave "$@"
-    #   rm -rf ~/.config/BraveSoftware/Brave-Browser/Default/{Cache,Cookies,History,Site\ Data}
-    # '';
-  in [
+  environment.systemPackages = with pkgs; [
     # Apps
     inkscape libreoffice proton-pass vlc
 
@@ -48,7 +39,6 @@
       enableSSHSupport = true;
       pinentryPackage = pkgs.pinentry-curses;
     };
-    # neovim = ./neovim;
     zsh.enable = true;
   };
 
@@ -57,7 +47,7 @@
   services = {
     displayManager = {
       ly.enable = true;
-      sessionPackages = with pkgs; [ sway ]; # hyprland st
+      sessionPackages = with pkgs; [ sway ]; # hyprland dwm
     };
     libinput = {
       enable = true;

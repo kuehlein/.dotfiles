@@ -45,6 +45,10 @@
 	      useUserPackages = true; # Install user pkgs to profile.
 	      users.kuehlein = import ./home/kuehlein.nix;
 	      users.kyle = import ./home/kyle.nix;
+
+              users.kuehlein = { pkgs, inputs, ... }: {
+	        imports = [ inputs.neovim-config.homeManagerModules.default ];
+	      };
 	    };
 	  }
         ];
