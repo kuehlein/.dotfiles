@@ -5,7 +5,7 @@
 
   imports = [
     ./common.nix
-    ./neovim
+    # ./neovim
   ];
 
   services.gnome-keyring = {
