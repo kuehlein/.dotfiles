@@ -21,6 +21,9 @@
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard
 
+    # Nix
+    nix-prefetch-scripts
+
     # Utilities
     bat curl fd htop ripgrep tmux tree unzip wget zip
   ];
