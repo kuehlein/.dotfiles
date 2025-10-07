@@ -40,7 +40,7 @@
 	  home-manager.nixosModules.home-manager
   	  {
 	    home-manager = {
-	      # backupFileExtension = "backup";
+	      backupFileExtension = "backup";
 	      extraSpecialArgs = { inherit inputs; };
 	      useGlobalPkgs = true; # Share system pkgs.
 	      useUserPackages = true; # Install user pkgs to profile.
