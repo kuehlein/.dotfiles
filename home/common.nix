@@ -1,6 +1,6 @@
 { inputs, pkgs, ... }: {
   imports = [
-    inputs.neovim-config.homeManagerModules.default
+    inputs.neovim-config.homeModules.default
   ];
 
   # Tell applications that use the "system theme" to use a dark theme
