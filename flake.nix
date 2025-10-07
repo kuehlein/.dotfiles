@@ -15,17 +15,6 @@
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
-      # TODO: do we want something like this?
-      # i think this replaces the `home-manager.nixosModules.home-manager` bit below
-	#      homeConfigurations."???" =
-	#        inputs.home-manager.lib.homeManagerConfiguration {
-	#   inherit pkgs;
-	#
-	#   modules = [ ./home/kuehlein.nix ];
-	#
-	#   extraSpecialArgs = { inherit inputs };
-	# };
-
       nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         modules = [
