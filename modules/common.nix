@@ -28,7 +28,7 @@
     bat curl fd htop ripgrep tmux tree unzip wget zip
 
     # Hardware Utilities
-    inxi lshw dmidecode
+    inxi lshw dmidecode pulseaudio
   ];
 
   networking = {
