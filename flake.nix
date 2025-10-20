@@ -19,7 +19,7 @@
         system = "x86_64-linux";
         modules = [
           ./configuration.nix
-	  ./modules/common.nix
+          ./modules/common.nix
 
           ./setups/common.nix
 	  ./setups/sway/default.nix
@@ -40,6 +40,7 @@
 	    };
 	  }
         ];
+	specialArgs = { inherit inputs; };
       };
     };
 }
