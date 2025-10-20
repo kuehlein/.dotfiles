@@ -16,7 +16,7 @@
     # brave-wrapped
 
     # Development
-    git neovim-config.packages."x86_64-linux".default # neovim
+    git inputs.neovim-config.packages.${pkgs.system}.default # neovim
 
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard
