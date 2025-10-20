@@ -3,10 +3,7 @@
 { pkgs, ... }: {
   home.stateVersion = "25.05";
 
-  imports = [
-    ./common.nix
-    # ./neovim
-  ];
+  imports = [ ./common.nix ];
 
   services.gnome-keyring = {
     enable = true;
