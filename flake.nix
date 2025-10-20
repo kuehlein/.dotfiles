@@ -33,8 +33,10 @@
 	      extraSpecialArgs = { inherit inputs; };
 	      useGlobalPkgs = true; # Share system pkgs.
 	      useUserPackages = true; # Install user pkgs to profile.
-	      users.kuehlein = import ./home/kuehlein.nix;
-	      users.kyle = import ./home/kyle.nix;
+	      users = {
+	        kuehlein = import ./home/kuehlein.nix;
+	        kyle = import ./home/kyle.nix;
+	      };
 	    };
 	  }
         ];
