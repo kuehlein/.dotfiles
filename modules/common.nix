@@ -1,5 +1,5 @@
 { config, inputs, lib, pkgs, ... }: {
-  imports = [ ./git ];
+  imports = [ ./git.nix ];
 
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
