@@ -44,4 +44,6 @@
     };
     ssh.startAgent = true;
   };
+
+  services.ssh-agent.enable = true;
 }
