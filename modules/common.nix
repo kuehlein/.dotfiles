@@ -1,4 +1,6 @@
 { config, inputs, lib, pkgs, ... }: {
+  imports = [ ./git ];
+
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
@@ -13,10 +15,9 @@
 
     # Browsing
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
-    # brave-wrapped
 
     # Development
-    git inputs.neovim-config.packages.${pkgs.system}.default # neovim
+    inputs.neovim-config.packages.${pkgs.system}.default # neovim
 
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard
@@ -66,7 +67,6 @@
       IdleActionSec = 300; # 5 minutes before sleep
       LockScreen = true; # Display lock screen after sleep
     };
-    openssh.enable = true;
     pipewire = {
       enable = true;
       alsa.enable = true;
