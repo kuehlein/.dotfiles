@@ -26,9 +26,8 @@
       enable = true;
       # TODO: move this to separate file?
       initContent = ''
-        if [[ -z "$SSH_AUTH_SOCK" ]]; then
-          export SSH_AUTH_SOCK=$(gnome-keyright-daemon --start --components=ssh | grep SSH_AUTH_SOCK | cut -d= -f2)
-        fi
+        [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
+        ssh-add ~/.ssh/id_ed25519_github
 
         if [[ -n $PS1 && -z $TMUX ]]; then
           fastfetch
