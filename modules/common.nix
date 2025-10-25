@@ -1,4 +1,4 @@
-{ config, inputs, lib, pkgs, ... }: {
+{ config, lib, pkgs, ... }: {
   imports = [ ./git.nix ];
 
   # Enable flakes globally
@@ -16,8 +16,8 @@
     # Browsing
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
-    # Development
-    inputs.neovim-config.packages.${pkgs.system}.default # neovim
+    # Dev
+    neovim-config.packages.${system}.default
 
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard

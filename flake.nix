@@ -10,13 +10,14 @@
     neovim-config.url = "github:kuehlein/neovim-config";
   };
 
-  outputs = { home-manager, nixpkgs, self, ... }@inputs:
+  outputs = { home-manager, neovim-config, nixpkgs, self, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
     in {
       nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
+	specialArgs = { inherit neovim-config; };
         modules = [
           ./configuration.nix
           ./modules/common.nix
@@ -30,7 +31,6 @@
   	  {
 	    home-manager = {
 	      backupFileExtension = "backup";
-	      extraSpecialArgs = { inherit inputs; };
 	      useGlobalPkgs = true; # Share system pkgs.
 	      useUserPackages = true; # Install user pkgs to profile.
 	      users = {
@@ -40,7 +40,6 @@
 	    };
 	  }
         ];
-	specialArgs = { inherit inputs; };
       };
     };
 }

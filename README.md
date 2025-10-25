@@ -1,3 +1,103 @@
+# NixOS Configuration
+
+*Personal NixOS configuration*
+
+---
+
+### Connect to new wifi network
+
+1. Find the network:
+```
+$ nmcli device wifi list
+```
+
+2a. Connect to the wifi network
+```
+$ nmcli device wifi connect <SSID>
+```
+
+2b. Input wifi password if prompted
+
+### Adjust volume
+
+```
+$ pactl set-sink-volume @DEFAULT_SINK@ <x>%
+```
+
+
+### TODO
+ - disable intel ME (QM370)
+ - 
+ - get neovim flake working
+ - easier connection to wifi
+
+ Note:
+ - Whenever updating `neovim-config` repo, run `nix flake lock --update-input neovim-config`
+
+ - `sudo nix-collect-garbage --delete-older-than xd` where `x` is # of days -- to delete older builds
+
+
+
+
+ ---
+
+ pending next build:
+  - neovim config integration
+  - nix-prefetch-scripts
+
+
+---
+
+`nix flake metadata` =>
+
+`nix flake update`
+
+`nix run` => runs a packaged binary.
+|___ outputs.packages."SYSTEM".default
+
+`nix build` => builds a package
+|___ outputs.packages."SYSTEM".default
+
+`nix develop` => activates a dev shell
+|___ outputs.devShells."SYSTEM".default
+
+`nixos-rebuild` => builds a nixos system
+|___ outputs.nixosConfigurations."HOSTNAME"
+
+`home-manager` => builds a home configuration
+|___ outputs.homeConfigurations."USERNAME"
+
+`nix repl` => repl for nix
+
+`nix derivation show /nix/store/<hash>-file_name.drv`
+
+`nix flake show` => check outputs for flake
+
+
+
+
+`git branch --show-current | tr -d '\n\ | wl-copy`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+### Future README section about creating ssh keys for new systems
+
+
 NixOS Configuration
 
 Set Up SSH Keys for GitHub:
@@ -161,58 +261,3 @@ Use kuehlein@users.noreply.github.com for commits to avoid GH007 errors.
 Configurations (/root/.gitconfig, /home/kuehlein/.gitconfig, /home/kuehlein/.zshrc, SSH keys) persist through reboots/rebuilds.
 Back up keys before reinstalling NixOS.
 Rotate keys by updating both locations and GitHub.
-
-
-
-
-
-TODO:
- - a lot
- - disable intel ME (QM370)
-
- Note:
- - Whenever updating `neovim-config` repo, run `nix flake lock --update-input neovim-config`
-
- - `sudo nix-collect-garbage --delete-older-than xd` where `x` is # of days -- to delete older builds
-
-
-
-
- ---
-
- pending next build:
-  - neovim config integration
-  - nix-prefetch-scripts
-
-
----
-
-`nix flake metadata` =>
-
-`nix flake update`
-
-`nix run` => runs a packaged binary.
-|___ outputs.packages."SYSTEM".default
-
-`nix build` => builds a package
-|___ outputs.packages."SYSTEM".default
-
-`nix develop` => activates a dev shell
-|___ outputs.devShells."SYSTEM".default
-
-`nixos-rebuild` => builds a nixos system
-|___ outputs.nixosConfigurations."HOSTNAME"
-
-`home-manager` => builds a home configuration
-|___ outputs.homeConfigurations."USERNAME"
-
-`nix repl` => repl for nix
-
-`nix derivation show /nix/store/<hash>-file_name.drv`
-
-`nix flake show` => check outputs for flake
-
-
-
-
-`git branch --show-current | tr -d '\n\ | wl-copy`
