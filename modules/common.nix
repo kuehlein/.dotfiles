@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }: {
+{ config, lib, neovim-config, pkgs, ... }: {
   imports = [ ./git.nix ];
 
   # Enable flakes globally
