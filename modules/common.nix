@@ -26,7 +26,7 @@
     nix-prefetch-scripts
 
     # Utilities
-    bat curl fd htop ripgrep tmux tree unzip wget zip
+    bat curl fd htop jq ripgrep tmux tree unzip wget zip
 
     # Hardware Utilities
     inxi lshw dmidecode pulseaudio
