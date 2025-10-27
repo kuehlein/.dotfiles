@@ -26,8 +26,8 @@
       enable = true;
       # TODO: move this to separate file?
       initContent = ''
-        [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)"
-        ssh-add ~/.ssh/id_ed25519_github
+        [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
+        ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 
         if [[ -n $PS1 && -z $TMUX ]]; then
           fastfetch
