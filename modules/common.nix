@@ -17,7 +17,7 @@
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
     # Dev
-    neovim-config.packages.${system}.default
+    cargo neovim-config.packages.${system}.default
 
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard

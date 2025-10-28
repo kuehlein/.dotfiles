@@ -163,20 +163,3 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 bindsym $mod+a focus parent
-# ==============================================================
-
-# set $mod Mod4
-# floating_modifier $mod
-
-# # Scratchpad
-# bindsym $mod+Shift+space move scratchpad
-# bindsym $mod+space scratchpad show
-
-# # Start a terminal
-# bindsym $mod+Return exec kitty
-
-# # ???
-# bindsym $mod+d exec wofi --show drun
-
-# # Ensures D-Bus sees keyring env
-# exec dbus-activation-environment --all

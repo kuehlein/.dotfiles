@@ -2,6 +2,14 @@
 
 *Personal NixOS configuration*
 
+TODO:
+- `n` & `p` vs `n` & `e`?
+- language formatters
+- multiple hosts
+- treesitter
+- telescope replacement
+- configure zsh
+
 ---
 
 ### Connect to new wifi network
@@ -13,7 +21,8 @@ $ nmcli device wifi list
 
 2a. Connect to the wifi network
 ```
-$ nmcli device wifi connect <SSID>
+$ nmcli device wifi connect <SSID> # Without password
+$ nmcli device wifi connect <SSID> --ask # With password
 ```
 
 2b. Input wifi password if prompted
