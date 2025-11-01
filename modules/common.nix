@@ -29,7 +29,7 @@
     nix-prefetch-scripts
 
     # Renderer
-    pylatexenc
+    python3Packages.pylatexenc
 
     # Utilities
     bat curl fd htop jq ripgrep tmux tree unzip wget zip
