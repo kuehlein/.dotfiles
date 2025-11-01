@@ -19,17 +19,20 @@
     # Dev
     cargo neovim-config.packages.${system}.default
 
+    # Hardware Utilities
+    inxi lshw dmidecode pulseaudio
+
     # Misc.
     fastfetch grim lm_sensors mako slurp wl-clipboard
 
     # Nix
     nix-prefetch-scripts
 
+    # Renderer
+    pylatexenc
+
     # Utilities
     bat curl fd htop jq ripgrep tmux tree unzip wget zip
-
-    # Hardware Utilities
-    inxi lshw dmidecode pulseaudio
   ];
 
   networking = {
