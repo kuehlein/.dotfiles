@@ -17,7 +17,7 @@
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
     # Dev
-    cargo neovim-config.packages.${system}.default sqlite3
+    cargo neovim-config.packages.${system}.default sqlite
 
     # Hardware Utilities
     inxi lshw dmidecode pulseaudio
