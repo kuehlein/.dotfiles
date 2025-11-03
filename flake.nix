@@ -8,9 +8,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     neovim-config.url = "github:kuehlein/neovim-config";
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { home-manager, neovim-config, nixpkgs, self, ... }:
+  outputs = { self, home-manager, neovim-config, nixpkgs, sops-nix, ... }:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -26,6 +30,9 @@
           ./setups/sway/default.nix
           # ./setups/hyprland/default.nix
           # ./setups/dwm/default.nix
+
+          # TODO: is this how i want to do this?
+          sops-nix.nixosModules.sops
 
           home-manager.nixosModules.home-manager
           {

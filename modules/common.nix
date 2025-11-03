@@ -17,7 +17,7 @@
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
     # Dev
-    cargo neovim-config.packages.${system}.default
+    cargo neovim-config.packages.${system}.default sqlite3
 
     # Hardware Utilities
     inxi lshw dmidecode pulseaudio
@@ -27,9 +27,6 @@
 
     # Nix
     nix-prefetch-scripts
-
-    # Renderer
-    python3Packages.pylatexenc
 
     # Utilities
     bat curl fd htop jq ripgrep tmux tree unzip wget zip
@@ -74,6 +71,18 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
+    };
+  };
+
+  # TODO: should this be here?
+  sops = {
+    defaultSopsFile = ./secrets/db.enc.yaml;
+    age.keyFile = "/home/kuehlein/.config/sops/age/keys.txt";
+    
+    secrets = {
+      db_credentials = {
+        owner = "kuehlein";
+      };
     };
   };
 

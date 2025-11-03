@@ -90,10 +90,70 @@ $ pactl set-sink-volume @DEFAULT_SINK@ <x>%
 
 
 
+### Generate age keys for `sops-nix`
+1. Install age
+```bash
+nix-shell -p age
 
+# Generate your personal key (store this safely!)
+mkdir -p ~/.config/sops/age
+age-keygen -o ~/.config/sops/age/keys.txt
 
+# Get your public key (you'll need this)
+```bash
+age-keygen -y ~/.config/sops/age/keys.txt
 
+# Output: age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p
+```
 
+⚠️ IMPORTANT: Backup ~/.config/sops/age/keys.txt securely! If you lose it, you can't decrypt your secrets.
+
+2. Create .sops.yaml in your config repo
+```yaml
+# .sops.yaml (in root of your dotfiles/config repo)
+keys:
+  - &admin age1ql3z7hjy54pw3hyww5ayyfg7zqgvc7w3j2elw8zmrj2kg5sfn9aqmcac8p  # Your public key
+
+creation_rules:
+  - path_regex: secrets/[^/]+\.ya?ml$
+    key_groups:
+      - age:
+          - *admin
+```
+
+3. Create secrets directory structure
+```bash
+bashmkdir -p secrets
+```
+
+4. Create your secrets file
+```bash
+bash# Create unencrypted template first
+cat > secrets/db.yaml << EOF
+database_url: postgresql://user:password@prod.example.com:5432/mydb
+dev_database_url: postgresql://user:password@dev.example.com:5432/devdb
+EOF
+
+# Encrypt it with sops
+sops -e secrets/db.yaml > secrets/db.enc.yaml
+rm secrets/db.yaml  # Remove unencrypted version
+
+# Or edit directly with sops (it encrypts on save)
+sops secrets/db.enc.yaml
+```
+
+5. In the sops editor, format like this:
+```yaml
+database_url: ENC[AES256_GCM,data:xxxx,...]
+dev_database_url: ENC[AES256_GCM,data:yyyy,...]
+```
+
+6. Add to .gitignore
+```gitignore
+gitignore# .gitignore
+secrets/db.yaml
+!secrets/db.enc.yaml  # Only commit encrypted version
+```
 
 
 
