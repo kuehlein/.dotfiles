@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }: {
+{ pkgs, ... }: {
   # Tell applications that use the "system theme" to use a dark theme
   dconf.settings."org/gnome/desktop/interface" = {
     color-scheme = "prefer-dark";
@@ -30,7 +30,7 @@
         ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 
         if [[ -n $PS1 && -z $TMUX ]]; then
-          fastfetch
+          fastfetch -c examples/21
         fi
       '';
     };
