@@ -70,9 +70,10 @@ input type:keyboard {
   repeat_rate 50
 }
 
-# input type:touchpad {
-#   natural_scroll enabled
-# }
+input type:touchpad {
+  middle_emulation disabled # TODO: does this work
+  # natural_scroll enabled
+}
 # =================================================================
 
 
