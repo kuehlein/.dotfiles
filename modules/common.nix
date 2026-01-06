@@ -1,5 +1,5 @@
 { config, lib, neovim-config, pkgs, ... }: {
-  imports = [ ./git.nix ];
+  imports = [ ./git.nix ./witr.nix ];
 
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -71,18 +71,6 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
-    };
-  };
-
-  # TODO: should this be here?
-  sops = {
-    defaultSopsFile = ./secrets/db.enc.yaml;
-    age.keyFile = "/home/kuehlein/.config/sops/age/keys.txt";
-    
-    secrets = {
-      db_credentials = {
-        owner = "kuehlein";
-      };
     };
   };
 
