@@ -23,7 +23,7 @@
     inxi lshw dmidecode pulseaudio
 
     # Misc.
-    fastfetch grim lm_sensors mako slurp wl-clipboard
+    claude-code fastfetch grim lm_sensors mako slurp wl-clipboard
 
     # Nix
     nix-prefetch-scripts
