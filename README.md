@@ -45,6 +45,7 @@ $ pactl set-sink-volume @DEFAULT_SINK@ <x>%
 
  - `sudo nix-collect-garbage --delete-older-than xd` where `x` is # of days -- to delete older builds
 
+- `sudo nixos-rebuild switch --flake "/etc/nixos#t490"` to rebuild after changes to `/etc/nixos`
 
 
 
