@@ -3,11 +3,7 @@
 *Personal NixOS configuration*
 
 TODO:
-- `n` & `p` vs `n` & `e`?
-- language formatters
 - multiple hosts
-- treesitter
-- telescope replacement
 - configure zsh
 
 ---
@@ -37,7 +33,6 @@ $ pactl set-sink-volume @DEFAULT_SINK@ <x>%
 ### TODO
  - disable intel ME (QM370)
  - 
- - get neovim flake working
  - easier connection to wifi
 
  Note:
