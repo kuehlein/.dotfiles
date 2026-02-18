@@ -16,14 +16,17 @@
     # Browsing
     brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
-    # Dev
-    cargo neovim-config.packages.${system}.default sqlite
+    # Dev (general)
+    claude-code neovim-config.packages.${system}.default sqlite
+
+    # Dev (rust)
+    cargo dioxus-cli
 
     # Hardware Utilities
     inxi lshw dmidecode pulseaudio
 
     # Misc.
-    claude-code fastfetch grim lm_sensors mako slurp wl-clipboard
+    fastfetch grim lm_sensors mako slurp wl-clipboard
 
     # Nix
     nix-prefetch-scripts
