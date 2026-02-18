@@ -2,15 +2,6 @@
   # TODO: swap out /home/kuehlein/... below
   environment = {
     etc = {
-      # System-wide config to prefer SSH over HTTPS for Github
-      "gitconfig" = {
-        mode = "0444";
-        text = ''
-          [url "ssh://git@github.com/"]
-            insteadOf = https://github.com/
-        '';
-      };
-
       # System-wide SSH config for Github
       "ssh/ssh_config.d/200-github.conf" = {
         mode = "0444";
