@@ -9,31 +9,38 @@
     systemd-boot.enable = true; # TODO: consider not using systemd... (grub)?
   };
 
-  environment.systemPackages = with pkgs; [
-    # Apps
-    inkscape libreoffice proton-pass vlc
+  environment = {
+    systemPackages = with pkgs; [
+      # Apps
+      inkscape libreoffice proton-pass vlc
 
-    # Browsing
-    brave mullvad mullvad-browser mullvad-vpn tor tor-browser
+      # Browsing
+      brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
-    # Dev (general)
-    claude-code neovim-config.packages.${system}.default sqlite
+      # Dev (general)
+      claude-code neovim-config.packages.${system}.default sqlite
 
-    # Dev (rust)
-    cargo dioxus-cli
+      # Dev (rust)
+      cargo dioxus-cli
 
-    # Hardware Utilities
-    inxi lshw dmidecode pulseaudio
+      # Hardware Utilities
+      inxi lshw dmidecode pulseaudio
 
-    # Misc.
-    fastfetch grim lm_sensors mako slurp wl-clipboard
+      # Misc.
+      cacert fastfetch grim lm_sensors mako slurp wl-clipboard
 
-    # Nix
-    nix-prefetch-scripts
+      # Nix
+      nix-prefetch-scripts
 
-    # Utilities
-    bat curl fd htop jq ripgrep tmux tree unzip wget zip
-  ];
+      # Utilities
+      bat curl fd htop jq ripgrep tmux tree unzip wget zip
+    ];
+    variables = {
+      SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
+      GIT_SSL_CAINFO = "/etc/ssl/certs/ca-bundle.crt";
+      NIX_SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
+    };
+  };
 
   networking = {
     firewall.enable = true;
