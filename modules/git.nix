@@ -9,7 +9,7 @@
           Host github.com
             HostName github.com
             User git
-            IdentityFile /home/kuehlein/.ssh/id_ed25519
+            IdentityFile /home/kuehlein/.ssh/id_ed25519_github
             IdentitiesOnly yes
         '';
       };
@@ -17,7 +17,6 @@
 
     systemPackages = with pkgs; [ git openssh ];
   };
-
 
   programs = {
     git = {
