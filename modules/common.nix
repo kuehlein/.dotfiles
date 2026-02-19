@@ -20,9 +20,6 @@
       # Dev (general)
       claude-code neovim-config.packages.${system}.default sqlite
 
-      # Dev (rust)
-      cargo dioxus-cli
-
       # Hardware Utilities
       inxi lshw dmidecode pulseaudio
 
@@ -30,7 +27,7 @@
       cacert fastfetch grim lm_sensors mako slurp wl-clipboard
 
       # Nix
-      nix-prefetch-scripts
+      direnv nix-prefetch-scripts
 
       # Utilities
       bat curl fd htop jq ripgrep tmux tree unzip wget zip
