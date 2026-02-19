@@ -22,6 +22,10 @@
       commandLineArgs = [ "--enable-features=WebUIDarkMode,HeuristicMemorySaver" ];
       package = pkgs.brave;
     };
+    direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+    };
     zsh = {
       enable = true;
       # TODO: move this to separate file?
