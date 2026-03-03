@@ -28,8 +28,24 @@
     };
     zsh = {
       enable = true;
-      # TODO: move this to separate file?
-      initContent = ''
+      autocd = true;
+      enableCompletion = true;
+      history = {
+        extended = true;
+        save = 1000000000;
+        size = 1000000000;
+      };
+      shellAliases = {
+        s = "kitten ssh";
+        g = "git";
+        ga = "git add";
+        gaa = "git add .";
+        gc = "git commit";
+        gst = "git status";
+        vim = "nvim";
+      };
+
+      initExtra = ''
         [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
         ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 
