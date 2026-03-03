@@ -45,7 +45,7 @@
         vim = "nvim";
       };
 
-      initExtra = ''
+      initContent = ''
         [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
         ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 
