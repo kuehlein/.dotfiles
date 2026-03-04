@@ -36,12 +36,13 @@
         size = 1000000000;
       };
       shellAliases = {
-        s = "kitten ssh";
         g = "git";
         ga = "git add";
         gaa = "git add .";
         gc = "git commit";
         gst = "git status";
+        nd = "nix develop";
+        s = "kitten ssh";
         vim = "nvim";
       };
 

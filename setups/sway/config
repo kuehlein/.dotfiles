@@ -9,11 +9,19 @@
 # Set the default font used by sway
 font pango:Maple Mono Regular 10
 
+# ===================== MONITOR/OUTPUT CONFIGURATION ==============
+# Personal external monitor (Dell) on the left, laptop screen on the right
+output DP-2 pos 0 0 res 1920x1080@60Hz
+output eDP-1 pos 1920 0 res 1920x1080@60Hz
+# =================================================================
+
 # Start the auth agent, if you don't use this you can comment out this line.
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-agent-1
 # exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
 # Start the network manager applet, can comment out this line if you don't use network manager.
 exec nm-applet
+# Start fcitx5 for Chinese input
+exec fcitx5 -d
 # =================================================================
 
 
@@ -56,13 +64,9 @@ client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
 
 
 # ===================== INPUT & KEYBOARD ==========================
-# I've included an example for dual keyboard layouts here, english and swedish,
-# as it's what I use. You can add/remove languages, change from "us,se" to "us,es"
-# for instance, if you want spanish; or any other.
-# You toggle between the languages with ALT+SHIFT
 input * {
-  xkb_layout "us,cn"
-  xkb_options "ctrl:nocaps, grp:alt_shift_toggle"
+  xkb_layout "us"
+  xkb_options "ctrl:nocaps"
 }
 
 input type:keyboard {
@@ -71,8 +75,12 @@ input type:keyboard {
 }
 
 input type:touchpad {
-  middle_emulation disabled # TODO: does this work
-  # natural_scroll enabled
+  # Reverse scroll direction (like macOS/Windows touchpads)
+  natural_scroll enabled
+  # Disable middle-click emulation to prevent accidental pastes
+  middle_emulation disabled
+  # Disable tap-to-click entirely (prevents 3-finger tap paste)
+  tap disabled
 }
 # =================================================================
 

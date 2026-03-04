@@ -4,6 +4,11 @@
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  i18n.inputMethod = {
+    enabled = "fcitx5";
+    fcitx5.addons = with pkgs; [ fcitx5-chinese-addons ];
+  };
+
   boot.loader = {
     efi.canTouchEfiVariables = true;
     systemd-boot.enable = true; # TODO: consider not using systemd... (grub)?
@@ -23,6 +28,9 @@
       # Hardware Utilities
       inxi lshw dmidecode pulseaudio
 
+      # Input Methods
+      fcitx5-configtool
+
       # Misc.
       cacert fastfetch grim lm_sensors mako slurp wl-clipboard
 
@@ -36,6 +44,12 @@
       SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
       GIT_SSL_CAINFO = "/etc/ssl/certs/ca-bundle.crt";
       NIX_SSL_CERT_FILE = "/etc/ssl/certs/ca-bundle.crt";
+
+      # fcitx5 environment variables for Wayland
+      GLFW_IM_MODULE = "ibus";
+      GTK_IM_MODULE = "fcitx";
+      QT_IM_MODULE = "fcitx";
+      XMODIFIERS = "@im=fcitx";
     };
   };
 
