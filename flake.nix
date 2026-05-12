@@ -35,7 +35,6 @@
               useUserPackages = true; # Install user pkgs to profile.
               users = {
                 kuehlein = import ./home/kuehlein.nix;
-                kyle = import ./home/kyle.nix;
               };
             };
           }
