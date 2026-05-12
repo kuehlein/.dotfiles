@@ -1,5 +1,5 @@
 { config, lib, neovim-config, pkgs, ... }: {
-  imports = [ ./git.nix ./witr.nix ];
+  imports = [ ./witr.nix ];
 
   # Enable flakes globally
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -24,6 +24,9 @@
 
       # Dev (general)
       claude-code neovim-config.packages.${system}.default sqlite
+
+      # Git & SSH
+      git openssh
 
       # Hardware Utilities
       inxi lshw dmidecode pulseaudio
@@ -67,6 +70,7 @@
       enableSSHSupport = false;
       pinentryPackage = pkgs.pinentry-curses;
     };
+    ssh.startAgent = true;
     zsh.enable = true;
   };
 
@@ -98,14 +102,6 @@
   time.timeZone = "America/New_York";
 
   users.users = {
-    # TODO: refine user configuration
-    kyle = {
-      description = "TODO...";
-      extraGroups = [ "networkmanager" "wheel" ];
-      isNormalUser = true;
-      shell = pkgs.zsh;
-    };
-
     kuehlein = {
       description = "kuehlein - admin";
       extraGroups = [
@@ -117,12 +113,13 @@
         "video" # Access to video devices (e.g., webcams, GPUs).
         "wheel" # Enables sudo access.
       ];
-      initialPassword = "changeme";
       isNormalUser = true;
       shell = pkgs.zsh;
     };
   };
 
-  # TODO: not sure about this...
-  xdg.portal.enable = lib.mkForce false;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+  };
 }

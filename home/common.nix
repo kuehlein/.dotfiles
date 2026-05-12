@@ -26,6 +26,31 @@
       enable = true;
       nix-direnv.enable = true;
     };
+    git = {
+      enable = true;
+      extraConfig = {
+        core.editor = "nvim";
+        init.defaultBranch = "main";
+        url."ssh://git@github.com/".insteadOf = [
+          "https://github.com/"
+          "gh:"
+          "github:"
+        ];
+      };
+      userEmail = "kuehlein@users.noreply.github.com";
+      userName = "Kyle Uehlein";
+    };
+    ssh = {
+      enable = true;
+      matchBlocks = {
+        "github.com" = {
+          hostname = "github.com";
+          user = "git";
+          identityFile = "~/.ssh/id_ed25519_github";
+          identitiesOnly = true;
+        };
+      };
+    };
     zsh = {
       enable = true;
       autocd = true;
@@ -46,7 +71,7 @@
         vim = "nvim";
       };
 
-      initContent = ''
+      initExtra = ''
         [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
         ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 
