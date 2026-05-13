@@ -21,6 +21,8 @@
       "github.com" = {
         hostname = "github.com";
         user = "git";
+        # SSH key is managed by sops-nix and placed at this location
+        # See: modules/system/secrets.nix
         identityFile = "~/.ssh/id_ed25519_github";
         identitiesOnly = true;
       };
