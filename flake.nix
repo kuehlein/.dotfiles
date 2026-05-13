@@ -1,5 +1,5 @@
 {
-  description = "NixOS config with multiple setups (Sway, Hyprland & DWM)";
+  description = "NixOS configuration with Sway for t490";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -21,11 +21,9 @@
         modules = [
           ./configuration.nix
           ./modules/common.nix
+          ./modules/brave.nix
 
-          ./setups/common.nix
-          ./setups/sway/default.nix
-          # ./setups/hyprland/default.nix
-          # ./setups/dwm/default.nix
+          ./desktop/sway/default.nix
 
           home-manager.nixosModules.home-manager
           {

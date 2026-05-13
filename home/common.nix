@@ -4,18 +4,6 @@
     color-scheme = "prefer-dark";
   };
 
-  home.file.".config/BraveSoftware/Brave-Browser/Default/Preferences".text = builtins.toJSON {
-    brave = {
-      theme_type = 2; # Dark theme
-    };
-    sync = {
-      bookmarks_synced = true;
-      everything_synced = false;
-      history_synced = false;
-      setting_synced = true;
-    };
-  };
-
   programs = {
     chromium = {
       enable = true;

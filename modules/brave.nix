@@ -1,5 +1,3 @@
-# TODO: should this be in modules/common.nix?
-
 { config, pkgs, ... }: let
   chromeExtensionClientURL = "https://clients2.google.com/service/update2/crx";
 
