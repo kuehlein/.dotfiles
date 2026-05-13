@@ -11,7 +11,7 @@
 
   boot.loader = {
     efi.canTouchEfiVariables = true;
-    systemd-boot.enable = true; # TODO: consider not using systemd... (grub)?
+    systemd-boot.enable = true;
   };
 
   environment = {
@@ -79,7 +79,7 @@
   services = {
     displayManager = {
       ly.enable = true;
-      sessionPackages = with pkgs; [ sway ]; # hyprland dwm
+      sessionPackages = with pkgs; [ sway ];
     };
     libinput = {
       enable = true;

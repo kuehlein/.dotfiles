@@ -3,13 +3,12 @@
 in {
   imports = [
     ./waybar
-    # ./wofi
+    ./wofi
   ];
 
   environment = {
     etc."sway/config".text = builtins.concatStringsSep "\n" [
       (builtins.readFile ./config)
-      # (builtins.readFile ./config.keybinds)
       "output * bg ${toString wallpaper} fill"
     ];
     sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";

@@ -15,10 +15,6 @@ output DP-2 pos 0 0 res 1920x1080@60Hz
 output eDP-1 pos 1920 0 res 1920x1080@60Hz
 # =================================================================
 
-# Start the auth agent, if you don't use this you can comment out this line.
-# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-agent-1
-# exec --no-startup-id sh -c ' eval $(gnome-keyring-daemon --login) eval $(gnome-keyring-daemon --start --components=secrets,ssh) export SSH_AUTH_SOCK'
-# Start the network manager applet, can comment out this line if you don't use network manager.
 exec nm-applet
 # Start fcitx5 for Chinese input
 exec fcitx5 -d
@@ -35,10 +31,6 @@ set $up k
 set $right l
 set $term kitty
 set $application_launcher pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun
-
-# --- THE FILE EXPLORER! I recommend either nautilus or nemo, personally I think nautilus fits nicely,
-# --- although make sure to install and use my GTK theme, guide on that is in the github README.
-# set $file_explorer GTK_THEME=diinki-retro-dark nautilus
 # =================================================================
 
 
@@ -99,7 +91,6 @@ bar {
 # grim, slurp, and swappy. Feel free to use a different screenshot
 # solution.
 
-#bindsym $mod+Shift+s exec "QT_QPA_PLATFORM=xcb flameshot gui"
 bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 # =================================================================
 
@@ -110,7 +101,6 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 # understand and edit.
 
 bindsym $mod+Return exec $term
-bindsym $mod+e exec $file_explorer
 bindsym $mod+d exec $application_launcher
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
