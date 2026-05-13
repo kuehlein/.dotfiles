@@ -1,0 +1,27 @@
+# SOPS configuration for secret management
+# See: https://github.com/Mic92/sops-nix
+
+keys:
+  # Host keys - machines that can decrypt secrets
+  - &t490 age1j5stf7fgf2gfwptzn43tzma3cp7chzhuz025f98efefh4nzzuvjqgvz293
+
+# Creation rules define which keys can decrypt which secrets
+creation_rules:
+  # Default rule - all secrets can be decrypted by t490
+  - path_regex: secrets/secrets\.yaml$
+    key_groups:
+      - age:
+          - *t490
+
+  # Example: host-specific secrets (uncomment and modify as needed)
+  # - path_regex: secrets/hosts/t490\.yaml$
+  #   key_groups:
+  #     - age:
+  #         - *t490
+
+  # Example: shared secrets for multiple machines (for future use)
+  # - path_regex: secrets/shared\.yaml$
+  #   key_groups:
+  #     - age:
+  #         - *t490
+  #         - *future_machine

@@ -10,6 +10,11 @@
 
   home.stateVersion = "25.05";
 
+  # Environment variables
+  home.sessionVariables = {
+    EDITOR = "nvim";
+  };
+
   services.gnome-keyring = {
     enable = true;
     components = [ "secrets" "ssh" ];
