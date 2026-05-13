@@ -25,7 +25,7 @@
           "github:"
         ];
       };
-      userEmail = "kuehlein@users.noreply.github.com";
+      userEmail = "30834677+kuehlein@users.noreply.github.com";
       userName = "Kyle Uehlein";
     };
     ssh = {
