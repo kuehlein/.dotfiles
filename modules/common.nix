@@ -19,6 +19,9 @@
       # Apps
       inkscape libreoffice proton-pass vlc
 
+      # Bluetooth
+      blueman
+
       # Browsing
       brave mullvad mullvad-browser mullvad-vpn tor tor-browser
 
@@ -77,6 +80,7 @@
   security.polkit.enable = true;
 
   services = {
+    blueman.enable = true;
     displayManager = {
       ly.enable = true;
       sessionPackages = with pkgs; [ sway ];
@@ -96,6 +100,7 @@
       enable = true;
       alsa.enable = true;
       pulse.enable = true;
+      wireplumber.enable = true;
     };
   };
 
