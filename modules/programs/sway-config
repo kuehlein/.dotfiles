@@ -1,10 +1,3 @@
-# This is the sway config file made by diinki, as part of a retro futuristic linux rice,
-# made for my "Linux Ricing Guide" video, watch it if you want to learn more about linux
-# and ricing!
-#
-# The license is included in the repo (MIT License)
-
-
 # ===================== BASIC START-UP STUFF ======================
 # Set the default font used by sway
 font pango:Maple Mono Regular 10

@@ -18,20 +18,20 @@ in {
       ];
       ExtensionSettings = {
         "${darkReaderID}" = {
-	  installation_mode = "normal_installed";
-	  toolbar_pin = "force_pinned";
-	  update_url = chromeExtensionClientURL;
-	};
+          installation_mode = "normal_installed";
+          toolbar_pin = "force_pinned";
+          update_url = chromeExtensionClientURL;
+        };
         "${laceWalletID}" = {
-	  installation_mode = "normal_installed";
-	  toolbar_pin = "force_pinned";
-	  update_url = chromeExtensionClientURL;
-	};
+          installation_mode = "normal_installed";
+          toolbar_pin = "force_pinned";
+          update_url = chromeExtensionClientURL;
+        };
         "${protonPassID}" = {
-	  installation_mode = "normal_installed";
-	  toolbar_pin = "force_pinned";
-	  update_url = chromeExtensionClientURL;
-	};
+          installation_mode = "normal_installed";
+          toolbar_pin = "force_pinned";
+          update_url = chromeExtensionClientURL;
+        };
       };
     };
   };

@@ -1,14 +1,10 @@
-{ config, pkgs, ... }: let
+{ pkgs, ... }: let
   wallpaper = ../../assets/sun.jpg;
+  swayConfig = ./sway-config;
 in {
-  imports = [
-    ./waybar
-    ./wofi
-  ];
-
   environment = {
     etc."sway/config".text = builtins.concatStringsSep "\n" [
-      (builtins.readFile ./config)
+      (builtins.readFile swayConfig)
       "output * bg ${toString wallpaper} fill"
     ];
     sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
@@ -21,8 +17,8 @@ in {
   programs.sway = {
     enable = true;
     extraPackages = with pkgs; [
-      # Development
-      gcc kitty nodejs python3
+      # Terminal
+      kitty
 
       # Desktop
       swaylock waybar wayidle wofi

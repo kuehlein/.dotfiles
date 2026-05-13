@@ -353,39 +353,39 @@ users/
 ## 6. CLEANUP CHECKLIST
 
 ### Phase 1: Critical Fixes (Do First)
-- [ ] Commit or revert hyprland deletion
-- [ ] Fix networking.useDHCP conflict
-- [ ] Remove/hash initialPassword
-- [ ] Enable xdg.portal properly
-- [ ] Fix hosts/t490/default.nix misplacement
-- [ ] Decide on single vs multi-user approach
+- [x] Commit or revert hyprland deletion
+- [x] Fix networking.useDHCP conflict
+- [x] Remove/hash initialPassword
+- [x] Enable xdg.portal properly
+- [x] Fix hosts/t490/default.nix misplacement
+- [x] Decide on single vs multi-user approach
 
 ### Phase 2: High Priority (Do Soon)
-- [ ] Remove kyle user (if deciding on single-user)
-- [ ] Reorganize modules/ and setups/ directories
-- [ ] Update flake description
-- [ ] Remove all commented-out code
-- [ ] Fix zsh initContent → initExtra
-- [ ] Remove Brave Preferences direct write
+- [x] Remove kyle user (if deciding on single-user)
+- [x] Reorganize modules/ and setups/ directories
+- [x] Update flake description
+- [x] Remove all commented-out code
+- [x] Fix zsh initContent → initExtra (changed to initContent - correct option)
+- [x] Remove Brave Preferences direct write
 
 ### Phase 3: Medium Priority (Before Adding Features)
 - [ ] Address all TODO comments
 - [ ] Fix indentation consistency
 - [ ] Reorganize system vs user packages
 - [ ] Move development packages out of sway config
-- [ ] Clean up README organization
+- [x] Clean up README organization
 - [ ] Review and remove unused assets
 
 ### Phase 4: Low Priority (Nice to Have)
 - [ ] Update Sway config attribution
 - [ ] Add license headers if desired
-- [ ] Remove or enable wofi
+- [x] Remove or enable wofi
 - [ ] Clean up empty/unused files
 - [ ] Review duplicate hardware settings
 
 ### Phase 5: Architectural (Optional but Recommended)
-- [ ] Implement proper host structure
-- [ ] Reorganize user home-manager configs
+- [x] Implement proper host structure (modular structure implemented)
+- [x] Reorganize user home-manager configs
 - [ ] Set up secrets management
 - [ ] Add documentation structure
 
