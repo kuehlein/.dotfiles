@@ -1,108 +1,149 @@
 # NixOS Configuration
 
-*Personal NixOS configuration*
-
-TODO:
-- multiple hosts
-- configure zsh
+*Personal NixOS configuration for t490*
 
 ---
 
-### Connect to new wifi network
+## Common Tasks
 
-1. Find the network:
-```
-$ nmcli device wifi list
-```
+### Connect to Bluetooth Device
 
-2a. Connect to the wifi network
-```
-$ nmcli device wifi connect <SSID> # Without password
-$ nmcli device wifi connect <SSID> --ask # With password
+Shell aliases configured in `home/common.nix`:
+
+```bash
+headphones        # Connect to Sony WH-1000XM3
+headphones-off    # Disconnect headphones
 ```
 
-2b. Input wifi password if prompted
-
-### Adjust volume
-
+**First-time pairing:**
+```bash
+bluetoothctl
+> power on
+> agent on
+> default-agent
+> scan on
+# Wait for device to appear, then:
+> pair XX:XX:XX:XX:XX:XX
+> trust XX:XX:XX:XX:XX:XX
+> connect XX:XX:XX:XX:XX:XX
+> exit
 ```
-$ pactl set-sink-volume @DEFAULT_SINK@ <x>%
+
+**List paired devices:** `bluetoothctl devices`
+
+**Add new device aliases:** Edit `shellAliases` and `envExtra` in `home/common.nix`, then rebuild.
+
+### Connect to WiFi Network
+
+```bash
+# List available networks
+nmcli device wifi list
+
+# Connect to network
+nmcli device wifi connect <SSID>         # Without password
+nmcli device wifi connect <SSID> --ask  # With password
 ```
 
+### Adjust Volume
 
-### TODO
- - disable intel ME (QM370)
- - 
- - easier connection to wifi
+```bash
+pactl set-sink-volume @DEFAULT_SINK@ <x>%
+```
 
- Note:
- - Whenever updating `neovim-config` repo, run `nix flake lock --update-input neovim-config`
+---
 
- - `sudo nix-collect-garbage --delete-older-than xd` where `x` is # of days -- to delete older builds
+## System Management
 
-- `sudo nixos-rebuild switch --flake "/etc/nixos#t490"` to rebuild after changes to `/etc/nixos`
+### Rebuild System
+
+```bash
+sudo nixos-rebuild switch --flake "/etc/nixos#t490"
+```
+
+### Update Neovim Config
+
+```bash
+nix flake lock --update-input neovim-config
+sudo nixos-rebuild switch --flake "/etc/nixos#t490"
+```
+
+### Garbage Collection
+
+```bash
+sudo nix-collect-garbage --delete-older-than <x>d  # x = number of days
+```
+
+---
+
+## Nix Reference
+
+### Flake Commands
+
+```bash
+nix flake metadata              # Show flake metadata
+nix flake update                # Update all flake inputs
+nix flake show                  # Check outputs for flake
+```
+
+### Common Nix Commands
+
+```bash
+nix run                         # Run a packaged binary (outputs.packages."SYSTEM".default)
+nix build                       # Build a package (outputs.packages."SYSTEM".default)
+nix develop                     # Activate dev shell (outputs.devShells."SYSTEM".default)
+nix repl                        # Start Nix REPL
+nix derivation show /nix/store/<hash>-file_name.drv
+```
+
+### Output Mappings
+
+- `nix run/build` → `outputs.packages."SYSTEM".default`
+- `nix develop` → `outputs.devShells."SYSTEM".default`
+- `nixos-rebuild` → `outputs.nixosConfigurations."HOSTNAME"`
+- `home-manager` → `outputs.homeConfigurations."USERNAME"`
+
+### Misc Commands
+
+```bash
+# Copy current branch name to clipboard
+git branch --show-current | tr -d '\n' | wl-copy
+```
+
+---
+
+## TODO
+
+### Configuration
+- Multiple host configurations
+- Review and potentially remove optional systemd dependencies:
+  - Consider replacing `systemd-resolved` with traditional DNS
+  - Evaluate `systemd-timesyncd` vs `chrony`/`ntpd`
+  - Review other optional systemd components for minimization
+
+### Hardware
+- Disable Intel ME (QM370)
 
 
 
- ---
 
- pending next build:
-  - neovim config integration
-  - nix-prefetch-scripts
+
+
+
+
+
+
+
 
 
 ---
 
-`nix flake metadata` =>
+## Initial Setup Guide
 
-`nix flake update`
+### Set Up SSH Keys for GitHub
 
-`nix run` => runs a packaged binary.
-|___ outputs.packages."SYSTEM".default
-
-`nix build` => builds a package
-|___ outputs.packages."SYSTEM".default
-
-`nix develop` => activates a dev shell
-|___ outputs.devShells."SYSTEM".default
-
-`nixos-rebuild` => builds a nixos system
-|___ outputs.nixosConfigurations."HOSTNAME"
-
-`home-manager` => builds a home configuration
-|___ outputs.homeConfigurations."USERNAME"
-
-`nix repl` => repl for nix
-
-`nix derivation show /nix/store/<hash>-file_name.drv`
-
-`nix flake show` => check outputs for flake
-
-
-
-
-`git branch --show-current | tr -d '\n\ | wl-copy`
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Future README section about creating ssh keys for new systems
-
-
-NixOS Configuration
-
-Set Up SSH Keys for GitHub:
-
-For root (used for /etc/nixos):sudo -i
+**For root (used for /etc/nixos):**
+```bash
+sudo -i
 ssh-keygen -t ed25519 -C "kyleuehlein@gmail.com" -f /root/.ssh/id_ed25519
 chmod 700 /root/.ssh
 chmod 600 /root/.ssh/id_ed25519
