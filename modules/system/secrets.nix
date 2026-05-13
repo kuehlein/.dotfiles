@@ -9,8 +9,8 @@
     # Validate that sops can decrypt at build time
     validateSopsFiles = false; # Set to true after testing
 
-    # Age key file location (system's SSH host key)
-    age.keyFile = "/etc/ssh/ssh_host_ed25519_key";
+    # Age key derived from SSH host key
+    age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
 
     # SSH Keys
     secrets."ssh.github.private" = {
