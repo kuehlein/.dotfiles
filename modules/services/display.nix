@@ -6,15 +6,17 @@
     };
 
     # Lid switch behavior
-    logind.extraConfig = ''
-      HandleLidSwitch=suspend
-      HandleLidSwitchDocked=ignore
-    '';
+    logind.settings.Login = {
+      HandleLidSwitch = "suspend";
+      HandleLidSwitchDocked = "ignore";
+    };
   };
 
   xdg.portal = {
     enable = true;
     wlr.enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    config.common.default = "*";
   };
 
   security.polkit.enable = true;
