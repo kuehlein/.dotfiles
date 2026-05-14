@@ -3,8 +3,11 @@
     ./programs/browsers.nix
     ./programs/direnv.nix
     ./programs/git.nix
-    ./programs/waybar
-    ./programs/wofi
+    ./programs/gtk.nix
+    ./programs/kitty.nix
+    ./programs/quickshell
+    # ./programs/waybar          # Disabled - replaced by Quickshell
+    # ./programs/wofi            # Disabled - replaced by Quickshell launcher
     ./programs/zsh.nix
   ];
 
