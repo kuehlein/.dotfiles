@@ -23,24 +23,10 @@
       gst = "git status";
 
       # Misc
-      nd = "nix develop";
+      nd = "nix develop --command zsh";
       s = "kitten ssh";
       vim = "nvim";
     };
-
-    # Preserve aliases in nix develop shells
-    envExtra = ''
-      alias headphones='bluetoothctl connect 38:18:4C:19:92:DE'
-      alias headphones-off='bluetoothctl disconnect 38:18:4C:19:92:DE'
-      alias g='git'
-      alias ga='git add'
-      alias gaa='git add .'
-      alias gc='git commit'
-      alias gst='git status'
-      alias nd='nix develop'
-      alias s='kitten ssh'
-      alias vim='nvim'
-    '';
 
     initContent = ''
       [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null

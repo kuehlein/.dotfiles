@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   imports = [ ./hardware-configuration.nix ];
 
   boot.kernelModules = [ "i915" ];
