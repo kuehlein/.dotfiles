@@ -7,12 +7,78 @@ Migration guide for transforming the current NixOS setup to match the linux-retr
 
 ---
 
+## ⚠️ CURRENT STATUS: MIGRATION COMPLETE - AWAITING REBUILD
+
+**Migration commit:** `c1ae0ec` - "Migrate to linux-retroism theme"
+**Backup commit:** `31b0e70` - "Backup before linux-retroism migration"
+
+### ✅ Completed Steps
+
+All configuration changes have been applied and committed. The following work is **DONE**:
+
+1. ✅ Backup created
+2. ✅ Linux-retroism colors applied to Sway config
+3. ✅ Kitty terminal configured with retroism theme
+4. ✅ GTK & icon themes installed to `~/.local/share/`
+5. ✅ Retroism wallpaper set (copyleft.png)
+6. ✅ Required packages added: quickshell, socat, swappy, nemo
+7. ✅ Quickshell configuration copied and set up
+8. ✅ Sway config updated to use Quickshell instead of Waybar
+9. ✅ Waybar and Wofi disabled in home-manager
+10. ✅ All changes committed to git
+
+### 🚀 Next Steps - YOU NEED TO DO THIS:
+
+1. **Rebuild the system:**
+   ```bash
+   cd /etc/nixos
+   sudo nixos-rebuild switch --flake "/etc/nixos#t490"
+   ```
+
+2. **Restart Sway:**
+   - Log out and log back in, OR
+   - Press `Super+Shift+C` to reload Sway, OR
+   - Reboot the system
+
+3. **Test the new features:**
+   - [ ] Quickshell taskbar appears at the bottom
+   - [ ] Window buttons show up on taskbar
+   - [ ] **Super+D** - App launcher opens
+   - [ ] **Click start button** - Start menu appears
+   - [ ] **Super+E** - Nemo file manager opens
+   - [ ] **Super+Shift+S** - Screenshot with swappy annotation
+   - [ ] Retro colors on window borders (light gray for focused)
+   - [ ] Kitty terminal has retro color scheme
+   - [ ] System tray shows icons
+   - [ ] Clock widget displays time
+   - [ ] Workspace switcher works
+
+4. **If something breaks:**
+   ```bash
+   # Rollback to backup
+   git checkout 31b0e70
+   sudo nixos-rebuild switch --flake "/etc/nixos#t490"
+   # Then restart Sway
+   ```
+
+### 📝 Important Notes
+
+- **GTK themes:** Already installed to `~/.local/share/themes/` and `~/.local/share/icons/`
+- **Quickshell fonts:** Monaco and Charcoal fonts are included in the Quickshell config
+- **Keybindings changed:**
+  - `Super+D` now opens Quickshell launcher (was Wofi)
+  - `Super+E` now opens Nemo file manager (new)
+- **SwayFX:** Deferred - can be added later if you want shadows/effects
+- **nwg-look:** Not needed - we're not switching themes, just using one
+
+---
+
 ## Executive Summary
 
 This migration involves replacing Waybar with Quickshell (a QML-based panel), updating the color scheme to linux-retroism's retro aesthetic, adding GTK/icon themes, and configuring various UI components to match the 1990s look.
 
 **Complexity:** Medium-High
-**Estimated Time:** 4-6 hours
+**Estimated Time:** 4-6 hours (COMPLETED)
 **Risk Level:** Medium (requires replacing current panel system)
 
 ---
@@ -635,37 +701,141 @@ After Quickshell migration:
 
 ## Potential Issues & Solutions
 
-### Issue 1: Quickshell not in nixpkgs
+### Issue 1: Quickshell doesn't start after rebuild
 
-**Problem:** Quickshell might not be in stable nixpkgs
+**Problem:** No taskbar appears after rebuilding
 **Solution:**
-1. Check unstable channel
-2. Build from source using flake
-3. Add as custom package to flake
+1. Check if quickshell is running: `ps aux | grep quickshell`
+2. Try starting manually: `qs` (should see error messages if any)
+3. Check logs: `journalctl -xe | grep quickshell`
+4. Verify config files copied correctly: `ls ~/.config/quickshell/`
+5. If quickshell has errors, temporarily revert to Waybar:
+   ```bash
+   # In /etc/nixos/home/kuehlein.nix, uncomment:
+   # ./programs/waybar
+   # Comment out:
+   # ./programs/quickshell
+   # Rebuild and investigate quickshell issues
+   ```
 
-### Issue 2: GTK themes not applying
+### Issue 2: App launcher keybind (Super+D) doesn't work
 
-**Problem:** Themes in `~/.local/share/themes` not detected
+**Problem:** Pressing Super+D does nothing
 **Solution:**
-- Use `nwg-look` to verify theme installation
-- Check GTK version compatibility
-- Ensure `dconf` is installed
-
-### Issue 3: Quickshell IPC not working
-
-**Problem:** App launcher keybind doesn't work
-**Solution:**
-- Check `socat` is installed
 - Verify Quickshell is running: `ps aux | grep quickshell`
-- Check IPC socket: `ls /tmp/quickshell*`
+- Check `socat` is installed: `which socat`
+- Verify IPC socket exists: `ls /tmp/quickshell*` or `ls /run/user/$(id -u)/quickshell*`
+- Test IPC manually:
+  ```bash
+  qs ipc call appLauncher_$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused==true) | .name') toggleAppLauncher
+  ```
+- If the manual command works, the keybind should work after Sway reload
 
-### Issue 4: Fonts missing
+### Issue 3: GTK themes not applying to applications
 
-**Problem:** Monaco/Charcoal fonts not rendering
+**Problem:** GTK apps still use default theme
 **Solution:**
-- Copy fonts to `/etc/nixos/assets/fonts/`
-- Add to `fonts.packages` in NixOS config
-- Run `fc-cache -fv` after rebuild
+- Verify themes installed: `ls ~/.local/share/themes/` and `ls ~/.local/share/icons/`
+- Check GTK config: `cat ~/.config/gtk-3.0/settings.ini` and `cat ~/.config/gtk-4.0/settings.ini`
+- Ensure `dconf` is installed: `which dconf`
+- Restart GTK apps (they don't hot-reload themes)
+- If still not working, manually set with `gsettings`:
+  ```bash
+  gsettings set org.gnome.desktop.interface gtk-theme 'ClassicPlatinumStreamlined'
+  gsettings set org.gnome.desktop.interface icon-theme 'RetroismIcons'
+  ```
+
+### Issue 4: Quickshell crashes or has QML errors
+
+**Problem:** Quickshell starts but crashes or shows errors
+**Solution:**
+- Check Quickshell version: `qs --version`
+- Review QML errors in terminal output when running `qs`
+- Common issues:
+  - Missing QML dependencies (Qt6 modules)
+  - Path issues in QML files (check Config.qml, shell.qml)
+  - Font loading errors (Monaco/Charcoal)
+- Try the default Quickshell config to isolate the issue:
+  ```bash
+  mv ~/.config/quickshell ~/.config/quickshell.backup
+  qs  # Will use default config
+  ```
+
+### Issue 5: Colors look wrong or windows have wrong borders
+
+**Problem:** Window borders not showing retroism colors
+**Solution:**
+- Verify Sway config was updated: `cat /etc/sway/config | grep client.focused`
+- Should show: `client.focused #d8d8d8 #141216 #d8d8d8 #d8d8d8 #d8d8d8`
+- If not, rebuild may not have applied Sway config changes
+- Manually reload Sway: `Super+Shift+C`
+- Check if sway-config file has correct colors:
+  ```bash
+  cat /etc/nixos/modules/programs/sway-config | grep "client.focused"
+  ```
+
+### Issue 6: Kitty terminal doesn't have retro colors
+
+**Problem:** Kitty still shows old color scheme
+**Solution:**
+- Check kitty config: `cat ~/.config/kitty/kitty.conf`
+- Should reference retroism colors
+- If kitty.conf doesn't exist or is wrong, home-manager may not have applied it
+- Restart kitty (colors only apply to new instances)
+- Test theme loading: `kitty +kitten themes` (should show current theme)
+
+### Issue 7: Screenshot annotation (swappy) doesn't work
+
+**Problem:** Super+Shift+S takes screenshot but doesn't open swappy
+**Solution:**
+- Verify swappy installed: `which swappy`
+- Test the command manually:
+  ```bash
+  grim -g "$(slurp)" - | swappy -f -
+  ```
+- Check if grim and slurp work independently:
+  ```bash
+  grim /tmp/test.png  # Should capture screen
+  slurp  # Should let you select region
+  ```
+- Ensure swappy config exists: `~/.config/swappy/config` (optional but recommended)
+
+### Issue 8: Fonts missing (Monaco/Charcoal not rendering)
+
+**Problem:** Quickshell UI shows wrong fonts
+**Solution:**
+- Fonts are bundled in Quickshell config: `/etc/nixos/home/programs/quickshell/config/fonts/`
+- Check if fonts were copied: `ls /etc/nixos/home/programs/quickshell/config/fonts/`
+- Should see: Charcoal.ttf, Monaco.ttf, MaterialSymbolsSharp*.ttf
+- Quickshell loads fonts from its config directory, no system-wide install needed
+- If fonts still don't load, check QML font loading in `taskbar/Bar.qml`
+
+### Issue 9: Build fails with "error: attribute not found"
+
+**Problem:** NixOS rebuild fails with Nix errors
+**Solution:**
+- Check for syntax errors in new .nix files
+- Common mistakes:
+  - Missing semicolons
+  - Unclosed braces/brackets
+  - Incorrect import paths
+- Validate specific files:
+  ```bash
+  nix-instantiate --parse /etc/nixos/home/programs/gtk.nix
+  nix-instantiate --parse /etc/nixos/home/programs/kitty.nix
+  nix-instantiate --parse /etc/nixos/home/programs/quickshell/default.nix
+  ```
+- If a specific file has errors, check the commit diff to see what changed
+
+### Issue 10: System tray icons don't appear
+
+**Problem:** Quickshell taskbar appears but system tray is empty
+**Solution:**
+- Some apps need to be restarted to show in system tray
+- Check if system tray is enabled in Quickshell config: `taskbar/SysTray.qml`
+- Test with a known tray app: `nm-applet` (network manager)
+- Verify Quickshell tray support: Check QML for `SystemTray` component
+- May need to wait a few seconds for tray icons to populate after login
 
 ---
 
