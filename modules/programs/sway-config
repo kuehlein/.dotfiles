@@ -54,6 +54,12 @@ client.focused_inactive #9b9b9b #141216 #d8cab8 #9b9b9b #9b9b9b
 client.unfocused        #9b9b9b #141216 #d8cab8 #9b9b9b #9b9b9b
 client.urgent           #fca002 #141216 #d8cab8 #fca002 #fca002
 client.placeholder      #bababa #141216 #d8cab8 #bababa #bababa
+
+# SwayFX effects (retro drop shadows)
+shadows enable
+shadow_offset 4 4
+shadow_color #000000
+shadow_blur_radius 1
 # =================================================================
 
 
