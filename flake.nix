@@ -14,11 +14,8 @@
     };
   };
 
-  outputs = { self, home-manager, neovim-config, nixpkgs, sops-nix, ... }:
-    let
-      system = "x86_64-linux";
-      pkgs = import nixpkgs { inherit system; };
-    in {
+  outputs = { home-manager, neovim-config, nixpkgs, sops-nix, ... }:
+    {
       nixosConfigurations.t490 = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit neovim-config; };
@@ -53,8 +50,8 @@
           {
             home-manager = {
               backupFileExtension = "backup";
-              useGlobalPkgs = true;    # Share system pkgs.
-              useUserPackages = true;  # Install user pkgs to profile.
+              useGlobalPkgs = true;
+              useUserPackages = true;
               users = {
                 kuehlein = import ./home/kuehlein.nix;
               };

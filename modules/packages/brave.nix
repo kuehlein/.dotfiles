@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: let
+{ ... }: let
   chromeExtensionClientURL = "https://clients2.google.com/service/update2/crx";
 
   darkReaderID = "eimadpbcbfnmbkopoojfekhnkhdbieeh";

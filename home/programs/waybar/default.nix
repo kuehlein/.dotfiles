@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ ... }: {
   programs.waybar = {
     enable = true;
     systemd.enable = false;  # Sway starts waybar, not systemd
@@ -14,7 +14,7 @@
         spacing = 0;
 
         modules-left = [ "sway/workspaces" ];
-        modules-center = [ "custom/applauncher" ];
+        modules-center = [ ];
         modules-right = [
           "network"
           "battery"
@@ -26,12 +26,6 @@
         "sway/workspaces" = {
           all-outputs = true;
           disable-scroll = true;
-          tooltip = false;
-        };
-
-        "custom/applauncher" = {
-          format = "〇";
-          on-click = "pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun --location=top -y 15";
           tooltip = false;
         };
 

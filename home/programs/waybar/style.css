@@ -15,7 +15,6 @@ window#waybar {
 
 #battery,
 #clock,
-#custom-applauncher,
 #network,
 #pulseaudio,
 #tray,
@@ -48,16 +47,6 @@ window#waybar {
 #pulseaudio:hover {
   background-image: linear-gradient(to bottom, #ac82e9 100%);
   color: #141216;
-  transition-duration: 120ms;
-}
-
-#custom-applauncher {
-  font-weight: bold;
-  transition-duration: 120ms;
-}
-#custom-applauncher:hover {
-  background-image: linear-gradient(to bottom, #ac82e9 100%);
-  color: #d8cab8;
   transition-duration: 120ms;
 }
 
@@ -103,11 +92,11 @@ window#waybar {
 
 #battery {
   background-color: #222222;
-  color: #d8cab8; /* #1d2021; */
+  color: #d8cab8;
 }
 #battery.warning,
 #battery.critical,
 #battery.urgent {
   background-color: #fc4649;
-  color: #d8cab8; /* #1d2021; */
+  color: #d8cab8;
 }
