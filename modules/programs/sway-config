@@ -2,6 +2,10 @@
 # Set the default font used by sway
 font pango:Maple Mono Regular 10
 
+# Import environment into systemd and D-Bus for services like portals
+exec systemctl --user import-environment DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+exec dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
+
 # ===================== MONITOR/OUTPUT CONFIGURATION ==============
 # Personal external monitor (Dell) on the left, laptop screen on the right
 output DP-2 pos 0 0 res 1920x1080@60Hz

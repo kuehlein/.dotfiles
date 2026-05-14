@@ -21,7 +21,7 @@ in {
       kitty
 
       # Desktop
-      swaylock waybar wayidle wofi
+      swaylock wayidle
     ];
     wrapperFeatures.gtk = true;
   };

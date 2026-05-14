@@ -20,7 +20,7 @@
       fcitx5-configtool
 
       # Misc.
-      cacert fastfetch grim lm_sensors mako nemo quickshell slurp socat swappy wl-clipboard
+      cacert fastfetch grim gvfs lm_sensors mako nemo quickshell slurp socat swappy wl-clipboard
 
       # Nix
       direnv nix-prefetch-scripts
