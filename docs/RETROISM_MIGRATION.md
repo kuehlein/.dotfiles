@@ -80,22 +80,41 @@ Migration guide for transforming the current NixOS setup to match the linux-retr
 - GTK apps use retro theme
 - Screenshot annotation with swappy
 
-**Optional Enhancement:**
-- Phase 5 (SwayFX) - Can be added later if you want window shadows/blur effects
+### 🚀 Phase 5: SwayFX (Optional Eye Candy) - ✅ CONFIGURED
+
+**Phase 5 Status:** Configuration complete, pending rebuild
+
+**Changes Made:**
+- ✅ Switched from Sway to SwayFX in `modules/programs/sway.nix`
+- ✅ Added retro drop shadow effects to `modules/programs/sway-config`:
+  - `shadows enable`
+  - `shadow_offset 4 4` (bottom-right offset for 90s aesthetic)
+  - `shadow_color #000000` (black shadows)
+  - `shadow_blur_radius 1` (subtle, crisp shadows)
+- ✅ Created `docs/MAINTENANCE.md` with SwayFX maintenance tracking
+
+**Maintenance Notes:**
+- SwayFX maintenance status tracked in `docs/MAINTENANCE.md`
+- Easy rollback: change one line in `sway.nix` to revert to regular Sway
+- Config compatible with both Sway and SwayFX
 
 ### 🚀 Next Steps:
 
-1. **Rebuild NixOS** to apply the waybar/wofi cleanup:
+1. **Rebuild NixOS** to apply SwayFX and effects:
    ```bash
    cd /etc/nixos
    sudo nixos-rebuild switch --flake "/etc/nixos#t490"
    ```
 
-2. **Test theme switcher** - Click the theme button on taskbar to try different color schemes
+2. **Restart Sway:**
+   - Log out and log back in, OR
+   - Press `Super+Shift+C` to reload
 
-3. **Optional: Add SwayFX** (Phase 5) - For shadows and blur effects if desired
+3. **Verify shadows work** - You should see subtle drop shadows on windows
 
-4. **Enjoy your retro desktop!** 🎨
+4. **Test theme switcher** - Click the theme button on taskbar to try different color schemes
+
+5. **Enjoy your complete retro desktop!** 🎨✨
 
 ### 📝 Important Notes
 

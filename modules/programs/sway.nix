@@ -16,6 +16,7 @@ in {
 
   programs.sway = {
     enable = true;
+    package = pkgs.swayfx;
     extraPackages = with pkgs; [
       # Terminal
       kitty
