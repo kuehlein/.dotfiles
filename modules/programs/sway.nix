@@ -1,5 +1,5 @@
 { pkgs, ... }: let
-  wallpaper = ../../assets/sun.jpg;
+  wallpaper = ../../assets/wallpapers/copyleft.png;
   swayConfig = ./sway-config;
 in {
   environment = {

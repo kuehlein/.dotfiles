@@ -28,7 +28,8 @@ set $down j
 set $up k
 set $right l
 set $term kitty
-set $application_launcher pgrep wofi >/dev/null 2>&1 && killall wofi || wofi --show drun
+set $files nemo
+set $menu quickshell ipc call appLauncher_$(swaymsg -t get_outputs -r | jq -r '.[] | select(.focused==true) | .name') toggleAppLauncher
 # =================================================================
 
 
@@ -42,13 +43,13 @@ default_border pixel 1px
 default_floating_border pixel 1px
 
 
-# The border colors:
+# The border colors (linux-retroism theme)
 #                       border  bg      text    ind     child border
-client.focused          #d8cab8 #141216 #d8cab8 #d8cab8 #d8cab8
-client.focused_inactive #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
-client.unfocused        #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
-client.urgent           #fcb167 #141216 #d8cab8 #fcb167 #fcb167
-client.placeholder      #AC82E9 #141216 #d8cab8 #AC82E9 #AC82E9
+client.focused          #d8d8d8 #141216 #d8d8d8 #d8d8d8 #d8d8d8
+client.focused_inactive #9b9b9b #141216 #d8cab8 #9b9b9b #9b9b9b
+client.unfocused        #9b9b9b #141216 #d8cab8 #9b9b9b #9b9b9b
+client.urgent           #fca002 #141216 #d8cab8 #fca002 #fca002
+client.placeholder      #bababa #141216 #d8cab8 #bababa #bababa
 # =================================================================
 
 
@@ -76,10 +77,9 @@ input type:touchpad {
 
 
 # ===================== THE INFO/TASKBAR ==========================
-# Simple, this just starts waybar which is what we are using.
-bar {
-  swaybar_command waybar
-}
+# Quickshell provides the taskbar, start menu, and app launcher
+exec_always qs kill
+exec_always qs
 # =================================================================
 
 
@@ -99,7 +99,8 @@ bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
 # understand and edit.
 
 bindsym $mod+Return exec $term
-bindsym $mod+d exec $application_launcher
+bindsym $mod+d exec $menu
+bindsym $mod+e exec $files
 bindsym $mod+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+space floating toggle
