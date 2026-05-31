@@ -55,25 +55,27 @@ RowLayout {
             }
 
             // TODO: Improve this, it's very messy right now.
-            property int focusedWindowId: 0
-            function getColor() {
+            property int focusedWindowId: {
                 if (usingHyprland == true) {
-                  focusedWindowId = Hyprland.focusedWorkspace.id;
-                }else {
-                  focusedWindowId = I3.focusedWorkspace.number;
+                    return Hyprland.focusedWorkspace ? Hyprland.focusedWorkspace.id : -1;
+                } else {
+                    return I3.focusedWorkspace ? I3.focusedWorkspace.number : -1;
                 }
+            }
 
+            property color bgColor: {
                 if (modelData.urgent) {
                     return Config.colors.urgent;
-                } else {
-                    if ((usingHyprland && modelData.id == focusedWindowId) || mouse.hovered) {
-                         return Config.colors.shadow;
-                    }else if ((usingHyprland == false && modelData.number == focusedWindowId) || mouse.hovered) {
-                         return Config.colors.shadow;
-                    }
+                } else if (mouse.hovered) {
+                    return Config.colors.shadow;
+                } else if (usingHyprland && modelData.id == focusedWindowId) {
+                    return Config.colors.shadow;
+                } else if (!usingHyprland && modelData.number == focusedWindowId) {
+                    return Config.colors.shadow;
                 }
                 return Config.colors.base;
             }
+
             background: Rectangle {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -81,7 +83,7 @@ RowLayout {
                 border.color: Config.colors.outline
                 width: 22
                 height: 22
-                color: getColor()
+                color: control.bgColor
             }
 
             HoverHandler {

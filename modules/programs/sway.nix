@@ -5,7 +5,7 @@ in {
   environment = {
     etc."sway/config".text = builtins.concatStringsSep "\n" [
       (builtins.readFile swayConfig)
-      "output * bg ${toString wallpaper} fill"
+      "output * bg ${wallpaper} fill"
     ];
     sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
   };
