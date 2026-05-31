@@ -1,5 +1,6 @@
 import Quickshell
 import Quickshell.Widgets
+import Quickshell.Io
 import QtQuick
 import QtQuick.Layouts
 import Quickshell.Services.SystemTray
@@ -12,6 +13,71 @@ RowLayout {
     anchors.right: parent.right
     anchors.verticalCenter: parent.verticalCenter
     anchors.rightMargin: 12
+
+    // Volume indicator using pactl
+    Text {
+        id: volumeText
+        Layout.rightMargin: 8
+        property string volumeOutput: ""
+
+        text: volumeOutput || "🔊 --"
+        color: Config.colors.text
+        font.pixelSize: Config.settings.bar.fontSize
+        verticalAlignment: Text.AlignVCenter
+
+        Process {
+            id: volumeProcess
+            running: true
+            command: ["sh", "-c", "pactl get-sink-volume @DEFAULT_SINK@ | grep -oP '\\d+%' | head -1"]
+
+            stdout: SplitParser {
+                onRead: data => {
+                    volumeText.volumeOutput = "🔊 " + data.trim()
+                }
+            }
+        }
+
+        Timer {
+            interval: 2000
+            running: true
+            repeat: true
+            onTriggered: volumeProcess.running = true
+        }
+    }
+
+    // Battery indicator using acpi
+    Text {
+        id: batteryText
+        Layout.rightMargin: 8
+        property string batteryOutput: ""
+
+        text: batteryOutput || "🔋 --"
+        color: Config.colors.text
+        font.pixelSize: Config.settings.bar.fontSize
+        verticalAlignment: Text.AlignVCenter
+
+        Process {
+            id: batteryProcess
+            running: true
+            command: ["sh", "-c", "cat /sys/class/power_supply/BAT0/capacity 2>/dev/null || echo '--'"]
+
+            stdout: SplitParser {
+                onRead: data => {
+                    var percent = data.trim()
+                    if (percent !== "--") {
+                        batteryText.batteryOutput = "🔋 " + percent + "%"
+                    }
+                }
+            }
+        }
+
+        Timer {
+            interval: 5000
+            running: true
+            repeat: true
+            onTriggered: batteryProcess.running = true
+        }
+    }
 
     Repeater {
         id: sysTray

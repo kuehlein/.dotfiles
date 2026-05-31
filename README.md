@@ -122,6 +122,10 @@ pactl set-sink-volume @DEFAULT_SINK@ <x>%
   - Evaluate `systemd-timesyncd` vs `chrony`/`ntpd`
   - Review other optional systemd components for minimization
 
+### Theme
+- Windows95 theme - [Chicago95 repo](https://github.com/grassmunk/Chicago95/tree/master)
+  - Cascading menu - [cascading menu repo](https://github.com/kin-fuyuki/deskdate)
+
 ### Hardware
 - Disable Intel ME (QM370)
 
