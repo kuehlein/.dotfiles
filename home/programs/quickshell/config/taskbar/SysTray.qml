@@ -50,11 +50,18 @@ RowLayout {
         id: batteryText
         Layout.rightMargin: 8
         property string batteryOutput: ""
+        property bool lowBatteryNotified: false
+        property int lastBatteryLevel: 100
 
         text: batteryOutput || "🔋 --"
         color: Config.colors.text
         font.pixelSize: Config.settings.bar.fontSize
         verticalAlignment: Text.AlignVCenter
+
+        Process {
+            id: batteryNotifyProcess
+            command: ["notify-send", "-u", "critical", "-i", "battery-low", "Low Battery", "Battery at 10% — plug in your charger."]
+        }
 
         Process {
             id: batteryProcess
@@ -65,7 +72,20 @@ RowLayout {
                 onRead: data => {
                     var percent = data.trim()
                     if (percent !== "--") {
+                        var level = parseInt(percent)
                         batteryText.batteryOutput = "🔋 " + percent + "%"
+
+                        // Reset notification flag when battery recovers above 20%
+                        if (level > 20) {
+                            batteryText.lowBatteryNotified = false
+                        }
+
+                        if (level <= 10 && !batteryText.lowBatteryNotified) {
+                            batteryNotifyProcess.running = true
+                            batteryText.lowBatteryNotified = true
+                        }
+
+                        batteryText.lastBatteryLevel = level
                     }
                 }
             }

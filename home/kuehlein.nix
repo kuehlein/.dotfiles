@@ -8,6 +8,7 @@
     ./programs/quickshell
     # ./programs/waybar          # Disabled - replaced by Quickshell
     # ./programs/wofi            # Disabled - replaced by Quickshell launcher
+    ./programs/presenterm.nix
     ./programs/zsh.nix
   ];
 

@@ -1,3 +1,12 @@
+# TODO: clean up repo, git history, etc.
+
+# TODO: preserve state of computer after restart/power off
+# TODO: implement Chicago95 theme
+# TODO: change password / implement 2fa?
+# TODO: easier way to change volume
+# TODO: fix scrolling
+# TODO: fix handling of displays
+
 {
   description = "NixOS configuration with Sway for t490";
 

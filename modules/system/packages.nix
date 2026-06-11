@@ -2,7 +2,7 @@
   environment = {
     systemPackages = with pkgs; [
       # Apps
-      inkscape libreoffice proton-pass vlc
+      inkscape libreoffice presenterm proton-pass vlc
 
       # Browsing
       brave mullvad mullvad-browser mullvad-vpn tor tor-browser
@@ -20,7 +20,7 @@
       fcitx5-configtool
 
       # Misc.
-      cacert fastfetch grim gvfs lm_sensors mako nemo quickshell slurp socat swappy wl-clipboard
+      cacert fastfetch grim gvfs libnotify lm_sensors mako nemo quickshell slurp socat swappy wl-clipboard
 
       # Nix
       direnv nix-prefetch-scripts
