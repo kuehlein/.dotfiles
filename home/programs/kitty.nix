@@ -20,6 +20,9 @@ in {
       # Font
       font_size = 11;
 
+      # Remote control (used by shell wrappers e.g. `present`)
+      allow_remote_control = "yes";
+
       # Opacity
       background_opacity = "0.985";
 

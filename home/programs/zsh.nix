@@ -29,6 +29,12 @@
     };
 
     initContent = ''
+      presenterm() {
+        kitty @ set-font-size 28
+        command presenterm "$@"
+        kitty @ set-font-size 0
+      }
+
       [ -z "$SSH_AUTH_SOCK" ] && eval "$(ssh-agent -s)" > /dev/null
       ssh-add ~/.ssh/id_ed25519_github 2>&1 | grep -v "Identity added" || true
 

@@ -20,6 +20,8 @@ exec swayidle -w \
   timeout 240 'swaylock -f' \
   timeout 300 'systemctl suspend' \
   before-sleep 'swaylock -f'
+# Lock immediately on lid close (more reliable than relying on before-sleep timing)
+bindswitch --reload --locked lid:on exec swaylock -f
 # =================================================================
 
 

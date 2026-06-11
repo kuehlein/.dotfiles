@@ -22,7 +22,7 @@ in {
       kitty
 
       # Desktop
-      swaylock wayidle
+      swaylock swayidle
     ];
     wrapperFeatures.gtk = true;
   };
