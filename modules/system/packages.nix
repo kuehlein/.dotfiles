@@ -20,7 +20,20 @@
       fcitx5-configtool
 
       # Misc.
-      cacert fastfetch grim gvfs libnotify lm_sensors mako nemo quickshell slurp socat swappy wl-clipboard
+      brightnessctl
+      cacert
+      fastfetch
+      grim
+      gvfs
+      libnotify
+      lm_sensors
+      mako
+      nemo
+      quickshell
+      slurp
+      socat
+      swappy
+      wl-clipboard
 
       # Nix
       direnv nix-prefetch-scripts
