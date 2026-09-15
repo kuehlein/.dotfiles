@@ -1,7 +1,7 @@
 { ... }: {
   programs.git = {
     enable = true;
-    extraConfig = {
+    settings = {
       core.editor = "nvim";
       init.defaultBranch = "main";
       url."ssh://git@github.com/".insteadOf = [
@@ -9,14 +9,15 @@
         "gh:"
         "github:"
       ];
+      user = {
+        email = "30834677+kuehlein@users.noreply.github.com";
+        name = "Kyle Uehlein";
+      };
     };
-    userEmail = "30834677+kuehlein@users.noreply.github.com";
-    userName = "Kyle Uehlein";
   };
 
   programs.ssh = {
     enable = true;
-    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
