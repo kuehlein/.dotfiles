@@ -24,7 +24,7 @@ return {
 				capabilities = require("cmp_nvim_lsp").default_capabilities()
 			end
 
-			local lspconfig = require("lspconfig")
+      local lspconfig = require("lspconfig");
 
 			local servers = {
 				bashls = true,
