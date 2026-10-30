@@ -126,3 +126,7 @@ export PATH
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# direnv — per-directory env loader (reads .envrc). Keep this near the end so
+# the hook wraps the final prompt. direnv 2.38+ handles `use flake` natively.
+eval "$(direnv hook zsh)"
