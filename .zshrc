@@ -104,6 +104,10 @@ alias gaa="git add ."
 alias gst="git status"
 alias gc="git commit"
 
+# Default editor — Neovim installed via nix profile (github:kuehlein/neovim-config)
+export EDITOR='nvim'
+export VISUAL='nvim'
+
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
