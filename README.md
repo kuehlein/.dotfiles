@@ -25,6 +25,13 @@ sudo nixos-rebuild switch --flake "/etc/nixos#t490"
 
 ## Common Tasks
 
+### Update Neovim Config
+
+**Pull latest Neovim configuration from Github**
+```bash
+nix flake update neovim-config
+```
+
 ### Bluetooth
 
 **Connect to paired device:**
